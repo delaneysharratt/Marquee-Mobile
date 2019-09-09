@@ -8,8 +8,7 @@ class Discover extends Component {
   render() {
     return (
       <div>
-        <SearchForm />
-        <GIFGalleryList />
+        <Search/>
       </div>
     );
   }

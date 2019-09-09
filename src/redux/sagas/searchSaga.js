@@ -5,14 +5,14 @@ import { put, takeLatest } from 'redux-saga/effects';
 function* fetchSearch(action) {
   try {
     let searchTerm = action.payload;
-    let response = yield axios.get(`/movie/${searchTerm}`);
-    console.log('saga search response', response.data);
+    let response = yield axios.get(`/api/search/${searchTerm}`);
+    console.log('Saga search response:', response.data);
     yield put({
       type: 'SET_SEARCH',
       payload: response.data
     });
-  } catch (error) {
-    console.log('error in client side search get', error);
+  } catch (err) {
+    console.log('Error in searchSaga GET', err);
   }
 }
 
