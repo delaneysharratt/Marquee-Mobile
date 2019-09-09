@@ -8,30 +8,32 @@ const sessionMiddleware = require('./modules/session-middleware');
 
 const passport = require('./strategies/user.strategy');
 
-// Route includes
+/** ---------- ROUTE INCLUDES ---------- **/
 const userRouter = require('./routes/user.router');
+const searchRouter = require('./routes/search.router')
 
-// Body parser middleware
+/** ---------- MIDDLEWARE ---------- **/
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Passport Session Configuration //
+//password session configuration//
 app.use(sessionMiddleware);
 
-// start up passport sessions
+//startup passport sessions//
 app.use(passport.initialize());
 app.use(passport.session());
 
-/* Routes */
+/** ---------- ROUTES ---------- **/
 app.use('/api/user', userRouter);
+app.use('/api/search', searchRouter)
 
-// Serve static files
+// Serve static files //
 app.use(express.static('build'));
 
 // App Set //
 const PORT = process.env.PORT || 5000;
 
-/** Listen * */
+/** ---------- LISTEN ---------- **/
 app.listen(PORT, () => {
   console.log(`Listening on port: ${PORT}`);
 });
