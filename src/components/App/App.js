@@ -8,8 +8,8 @@ import {
 
 import {connect} from 'react-redux';
 
-import Nav from '../Nav/Nav';
 import Header from '../Header/Header';
+import Nav from '../Nav/Nav';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 
@@ -33,7 +33,7 @@ class App extends Component {
             {/* Visiting localhost:3000 will redirect to localhost:3000/discover */}
             <Redirect exact from="/" to="/discover" />
             {/* For protected routes, the view could show one of several things on the same route.
-            Visiting localhost:3000/home will show the Discover if the user is logged in.
+            Visiting localhost:3000/discover will show the Discover if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the 'Login' or 'Register' page.
             Even though it seems like they are different pages, the user is always on localhost:3000/discover */}
             <ProtectedRoute
@@ -41,13 +41,6 @@ class App extends Component {
               path="/discover"
               component={Discover}
             />
-            <ProtectedRoute
-              exact
-              path="/discover"
-              component={Discover}
-            />
-            {/* This works the same as the other protected route, except that if the user is logged in,
-            they will see the Queue or Profile page instead. */}
             <ProtectedRoute
               exact
               path="/queue"
