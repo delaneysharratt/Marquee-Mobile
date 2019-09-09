@@ -8,23 +8,20 @@ require('dotenv').config();
 
 /** GET ROUTE **/
 router.get('/:searchTerm', (req, res) => {
-  searchTerm = req.params.searchTerm;
-  console.log('THIS THE SEARCH TERM SERVER SIDE', searchTerm);
+  const searchTerm = req.params.searchTerm;
+  console.log('Searching for...', searchTerm);
 
   axios
     .get(
-      `https://api.themoviedb.org/3/search/movie?api_key=${process.env.API_KEY}&query=${searchTerm}&page=1`
+      `https://api.themoviedb.org/3/search/multi?api_key=${process.env.API_KEY}&query=${searchTerm}&page=1`
     )
     .then(response => {
       console.log(response.data.results);
       res.send(response.data.results);
     })
     .catch(err => {
-      console.log(err);
+      console.log('Error in search router GET:', err);
     });
 });
-
-/** POST ROUTE **/
-router.post('/', (req, res) => {});
 
 module.exports = router;

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import LogOutButton from '../LogOutButton/LogOutButton';
 import './Header.css';
 
 const Header = props => (
@@ -14,7 +13,13 @@ const Header = props => (
         {/* Show this link if they are logged in or not,
         but call this link 'Logout' if they are logged in,
         and call this link 'Login / Register' if they are not */}
-        {props.user.id ? <LogOutButton className="nav-link" /> : 'Login / Register'}
+        {props.user.id ? (
+          <span onClick={() => props.dispatch({ type: 'LOGOUT' })}>
+            Log Out
+          </span>
+        ) : (
+          'Login / Register'
+        )}
       </Link>
     </div>
   </div>

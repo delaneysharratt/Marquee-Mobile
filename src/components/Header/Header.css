@@ -1,20 +1,21 @@
+.header {
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+  background-color: darkslateblue;
+}
+
 .header-title {
     font-size: 24px;
     font-weight: 700;
     display: inline-block;
     color: #f2f2f2;
-    padding-left: 10px;
-}
-
-.header {
-  overflow: hidden;
-  background-color: #00acb0;
 }
 
 .header-link {
   float: left;
   color: #f2f2f2;
-  background-color: #00acb0;
+  background-color: darkslateblue;
   text-align: center;
   padding: 24px 10px;
   text-decoration: none;
@@ -25,10 +26,6 @@
   border:none;
   cursor: pointer;
   outline:0;
-}
-
-.header-link:hover {
-  background-color: #008183;
 }
 
 .header-right {

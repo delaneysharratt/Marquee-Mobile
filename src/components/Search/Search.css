@@ -1,0 +1,14 @@
+.Search {
+    text-align: center;
+}
+
+.SearchList {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-content: space-around;
+  margin-bottom: 10%;
+}
+
+.Poster {
+    margin: 1em;
+}

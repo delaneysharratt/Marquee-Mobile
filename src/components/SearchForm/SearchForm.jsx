@@ -42,7 +42,7 @@ class Search extends Component {
       typing: false,
       typingTimeout: setTimeout(function() {
         self.fetchSearch(self.state.searchTerm);
-      }, 200)
+      }, 300)
     });
   };
 

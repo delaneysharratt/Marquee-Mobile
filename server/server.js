@@ -1,4 +1,3 @@
-
 const express = require('express');
 require('dotenv').config();
 
@@ -10,7 +9,8 @@ const passport = require('./strategies/user.strategy');
 
 /** ---------- ROUTE INCLUDES ---------- **/
 const userRouter = require('./routes/user.router');
-const searchRouter = require('./routes/search.router')
+const searchRouter = require('./routes/search.router');
+const watchRouter = require('./routes/watch.router');
 
 /** ---------- MIDDLEWARE ---------- **/
 app.use(bodyParser.json());
@@ -25,7 +25,8 @@ app.use(passport.session());
 
 /** ---------- ROUTES ---------- **/
 app.use('/api/user', userRouter);
-app.use('/api/search', searchRouter)
+app.use('/api/search', searchRouter);
+app.use('/api/watch', watchRouter);
 
 // Serve static files //
 app.use(express.static('build'));

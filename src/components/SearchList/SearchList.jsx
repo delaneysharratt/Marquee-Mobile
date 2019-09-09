@@ -6,8 +6,8 @@ import SearchItem from '../SearchItem/SearchItem';
 
 class SearchList extends Component {
   render() {
-    let searchList = this.props.search.slice(0, 5).map((watch, i) => {
-      return <SearchItem watch={watch} />;
+    let searchList = this.props.search.slice(0, 6).map((watch, i) => {
+      return <SearchItem key={i} watch={watch} />;
     });
 
     return <div className="SearchList">{searchList}</div>;
