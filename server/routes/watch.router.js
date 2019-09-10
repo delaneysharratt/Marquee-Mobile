@@ -6,7 +6,7 @@ const axios = require('axios');
 /** GET ROUTE **/
 router.get('/', (req, res) => {
   const user = req.user.id;
-  const queryText = `SELECT * FROM "watch" WHERE "user_id" = $1 AND "completed" = false`;
+  const queryText = `SELECT * FROM "watch" WHERE "user_id" = $1 ORDER BY "completed" ASC`;
 
   pool
     .query(queryText, [user])
@@ -37,6 +37,23 @@ router.post('/', (req, res) => {
     })
     .catch(err => {
       console.log('Error in watch router POST:', err);
+      res.sendStatus(500);
+    });
+});
+
+/** PUT ROUTE **/
+router.put('/:id', (req, res) => {
+  console.log('Updating completion for watch...');
+  const idToUpdate = req.params.id;
+
+  const queryText = `UPDATE "watch" SET "completed" = NOT "completed" WHERE "id" = $1`;
+  pool
+    .query(queryText, [idToUpdate])
+    .then(() => {
+      res.sendStatus(201);
+    })
+    .catch(err => {
+      console.log('Error in watch router PUT:', err);
       res.sendStatus(500);
     });
 });

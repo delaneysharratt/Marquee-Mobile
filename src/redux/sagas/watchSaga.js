@@ -11,7 +11,7 @@ function* fetchWatches(action) {
       payload: response.data
     });
   } catch (err) {
-    console.log('Error in watchSaga GET', err);
+    console.log('Error in watchSaga GET:', err);
   }
 }
 
@@ -24,13 +24,27 @@ function* addWatch(action) {
       type: 'FETCH_WATCHES'
     });
   } catch (err) {
-    console.log('Error in watchSaga POST', err);
+    console.log('Error in watchSaga POST:', err);
+  }
+}
+
+function* updateCompletion(action) {
+  try {
+    let id = action.payload;
+    yield axios.put(`./api/watch/${id}`);
+    yield put({
+      type: 'FETCH_MOVIES'
+    });
+  } catch (err) {
+    console.log('Error in watchSaga completion PUT:', err);
+    
   }
 }
 
 function* watchSaga() {
   yield takeLatest('FETCH_WATCHES', fetchWatches);
   yield takeLatest('ADD_WATCH', addWatch);
+  yield takeLatest('UPDATE_COMPLETION', updateCompletion);
 }
 
 export default watchSaga;

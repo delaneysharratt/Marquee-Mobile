@@ -8,6 +8,7 @@ import './Queue.css';
 import QueueItem from '../QueueItem/QueueItem';
 
 class Queue extends Component {
+  //Load queue on page load
   componentDidMount() {
     this.getQueue();
   }
@@ -19,6 +20,8 @@ class Queue extends Component {
   }
 
   render() {
+    //for each item in redux state.watch
+    //render a QueueItem for that watch
     let queueList = this.props.watches.map((watch, i) => {
       return <QueueItem key={i} watch={watch} />;
     });
