@@ -1,8 +1,8 @@
-.Search {
-    text-align: center;
+.Queue {
+  text-align: center;
 }
 
-.SearchList {
+.QueueList {
   display: inline-flex;
   flex-wrap: wrap;
   align-content: space-around;
@@ -10,5 +10,5 @@
 }
 
 .Poster {
-    margin: 1em;
+  margin: 1em;
 }

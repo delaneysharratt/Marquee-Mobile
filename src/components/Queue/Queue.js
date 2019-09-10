@@ -1,16 +1,37 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-// This is one of our simplest components
-// It doesn't have local state, so it can be a function component.
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is, so it doesn't need 'connect()'
+//STYLING IMPORTS
+import './Queue.css';
 
-const InfoPage = () => (
-  <div>
-    <p>
-      Info Page
-    </p>
-  </div>
-);
+//COMPONENT IMPORTS
+import QueueItem from '../QueueItem/QueueItem';
 
-export default InfoPage;
+class Queue extends Component {
+  componentDidMount() {
+    this.getQueue();
+  }
+
+  getQueue() {
+    this.props.dispatch({
+      type: 'FETCH_WATCHES'
+    });
+  }
+
+  render() {
+    let queueList = this.props.watches.map((watch, i) => {
+      return <QueueItem key={i} watch={watch} />;
+    });
+    return (
+      <div className="Queue">
+        <div className="QueueList">{queueList}</div>
+      </div>
+    );
+  }
+}
+
+const mapStateToProps = state => ({
+  watches: state.watch
+});
+
+export default connect(mapStateToProps)(Queue);
