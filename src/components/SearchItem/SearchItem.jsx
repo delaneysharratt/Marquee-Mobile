@@ -14,11 +14,32 @@ class SearchListItem extends Component {
     }
   };
 
+  componentDidMount() {
+    let title = '';
+    if (this.props.watch.title) {
+      title = this.props.watch.title;
+      console.log('has title');
+    } else {
+      title = this.props.watch.name;
+      console.log('has name');
+    }
+    this.setState({
+      watch: {
+        ...this.state.watch,
+        title: title
+      }
+    });
+  }
+
   addWatch = event => {
     console.log('Adding to Queue...');
     this.props.dispatch({
       type: 'ADD_WATCH',
       payload: this.state.watch
+    });
+    this.props.dispatch({
+      type: 'CLEAR_SEARCH',
+      payload: this.state.searchTerm
     });
   };
 
