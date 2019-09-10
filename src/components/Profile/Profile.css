@@ -2,7 +2,7 @@
   text-align: center;
 }
 
-.Collection {
+.ProfileList {
   display: inline-flex;
   flex-wrap: wrap;
   align-content: space-around;

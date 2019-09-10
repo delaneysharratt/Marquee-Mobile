@@ -34,7 +34,7 @@ class Queue extends Component {
 }
 
 const mapStateToProps = state => ({
-  watches: state.watch
+  watches: state.queue
 });
 
 export default connect(mapStateToProps)(Queue);
