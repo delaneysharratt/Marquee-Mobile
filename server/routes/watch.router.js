@@ -3,15 +3,33 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const axios = require('axios');
 
-/** GET ROUTE **/
+/** GET (QUEUE) ROUTE **/
 router.get('/', (req, res) => {
   const user = req.user.id;
-  const queryText = `SELECT * FROM "watch" WHERE "user_id" = $1 ORDER BY "completed" ASC`;
+  const queryText = `SELECT * FROM "watch" WHERE "user_id" = $1 
+                     ORDER BY "completed" ASC`;
 
   pool
     .query(queryText, [user])
     .then(result => {
       console.log('User watches:', result.rows);
+      res.send(result.rows);
+    })
+    .catch(err => {
+      console.log('Error in watch router GET:', err);
+      res.sendStatus(500);
+    });
+});
+
+/** GET (COLLECTION) ROUTE **/
+router.get('/collection', (req, res) => {
+  const user = req.user.id;
+  const queryText = `SELECT * FROM "watch" WHERE "user_id" = $1 
+                    AND "completed" = true ORDER BY "rating" DESC`;
+  pool
+    .query(queryText, [user])
+    .then(result => {
+      console.log('User Collection:', result.rows);
       res.send(result.rows);
     })
     .catch(err => {

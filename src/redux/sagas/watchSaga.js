@@ -28,6 +28,7 @@ function* addWatch(action) {
   }
 }
 
+//worker Saga: will be fired on "UPDATE_COMPLETION" actions
 function* updateCompletion(action) {
   try {
     let id = action.payload;
@@ -41,10 +42,25 @@ function* updateCompletion(action) {
   }
 }
 
+//worker Saga: will be fired on "FETCH_COLLECTION" actions
+function* fetchCollection(action) {
+  try {
+    let response = yield axios.get('/api/watch/collection');
+    console.log('Saga search response:', response.data);
+    yield put({
+      type: 'SET_COLLECTION',
+      payload: response.data
+    });
+  } catch (err) {
+    console.log('Error in watchSaga Collection GET:', err);
+  }
+  }
+
 function* watchSaga() {
   yield takeLatest('FETCH_WATCHES', fetchWatches);
   yield takeLatest('ADD_WATCH', addWatch);
   yield takeLatest('UPDATE_COMPLETION', updateCompletion);
+  yield takeLatest('FETCH_COLLECTION', fetchCollection);
 }
 
 export default watchSaga;

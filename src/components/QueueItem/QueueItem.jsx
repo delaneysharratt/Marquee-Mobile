@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 
-class Queue extends Component {
+class QueueItem extends Component {
   //switches "completed" to true/false
   changeCompletion = () => {
     this.props.dispatch({
@@ -43,4 +43,4 @@ class Queue extends Component {
   }
 }
 
-export default connect()(Queue);
+export default connect()(QueueItem);
