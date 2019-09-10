@@ -3,7 +3,8 @@ import errors from './errorsReducer';
 import loginMode from './loginModeReducer';
 import user from './userReducer';
 import search from './searchReducer';
-import watch from './watchReducer';
+import queue from './queueReducer';
+import profile from './profileReducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -15,8 +16,9 @@ const rootReducer = combineReducers({
   errors, // contains registrationMessage and loginMessage
   loginMode, // will have a value of 'login' or 'registration' to control which screen is shown
   user, // will have an id and username if someone is logged in
-  search, //will contain the results of API search 
-  watch //will contain all the watches added to a user's queue
+  search, //will contain the results of API search
+  queue, //will contain all the watches added to a user's queue
+  profile //will contain all of a user's completed watches on profile
 });
 
 export default rootReducer;

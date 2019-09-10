@@ -11,7 +11,7 @@ function* fetchWatches(action) {
       payload: response.data
     });
   } catch (err) {
-    console.log('Error in watchSaga GET:', err);
+    console.log('Error in watchSaga GET (Queue):', err);
   }
 }
 
@@ -28,6 +28,19 @@ function* addWatch(action) {
   }
 }
 
+//worker Saga: will be fired on "DELETE_WATCH" actions
+function* deleteWatch(action) {
+  try {
+    let id = action.payload;
+    yield axios.delete(`./api/watch/${id}`);
+    yield put({
+      type: 'FETCH_WATCHES'
+    });
+  } catch (err) {
+    console.log('Error in watchSaga completion DELETE:', err);
+  }
+}
+
 //worker Saga: will be fired on "UPDATE_COMPLETION" actions
 function* updateCompletion(action) {
   try {
@@ -38,29 +51,29 @@ function* updateCompletion(action) {
     });
   } catch (err) {
     console.log('Error in watchSaga completion PUT:', err);
-    
   }
 }
 
-//worker Saga: will be fired on "FETCH_COLLECTION" actions
-function* fetchCollection(action) {
+//worker Saga: will be fired on "FETCH_PROFILE" actions
+function* fetchProfile(action) {
   try {
-    let response = yield axios.get('/api/watch/collection');
+    let response = yield axios.get('/api/watch/profile');
     console.log('Saga search response:', response.data);
     yield put({
-      type: 'SET_COLLECTION',
+      type: 'SET_PROFILE',
       payload: response.data
     });
   } catch (err) {
-    console.log('Error in watchSaga Collection GET:', err);
+    console.log('Error in watchSaga GET (Profile):', err);
   }
-  }
+}
 
 function* watchSaga() {
   yield takeLatest('FETCH_WATCHES', fetchWatches);
   yield takeLatest('ADD_WATCH', addWatch);
+  yield takeLatest('DELETE_WATCH', deleteWatch);
   yield takeLatest('UPDATE_COMPLETION', updateCompletion);
-  yield takeLatest('FETCH_COLLECTION', fetchCollection);
+  yield takeLatest('FETCH_PROFILE', fetchProfile);
 }
 
 export default watchSaga;

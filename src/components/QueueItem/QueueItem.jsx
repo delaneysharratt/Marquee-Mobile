@@ -4,8 +4,17 @@ import { connect } from 'react-redux';
 //MATERIAL-UI IMPORTS
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import CancelIcon from '@material-ui/icons/Cancel';
 
 class QueueItem extends Component {
+  //re-fetches Queue
+  //after updating watch
+  getQueue() {
+    this.props.dispatch({
+      type: 'FETCH_WATCHES'
+    });
+  }
+  
   //switches "completed" to true/false
   changeCompletion = () => {
     this.props.dispatch({
@@ -13,19 +22,20 @@ class QueueItem extends Component {
       payload: this.props.watch.id
     });
     this.getQueue();
-  };
+  };  
 
-  //re-fetches Queue 
-  //after updating watch
-  getQueue() {
+  //deletes watch from Queue/Collection
+  deleteWatch = event => {
     this.props.dispatch({
-      type: 'FETCH_WATCHES'
+      type: 'DELETE_WATCH',
+      payload: this.props.watch.id
     });
-  }
+    this.getQueue();
+  };
 
   render() {
     const isCompleted = this.props.watch.completed;
-    
+
     return (
       <div key={this.props.watch.id} className="Poster">
         <img
@@ -38,6 +48,7 @@ class QueueItem extends Component {
         ) : (
           <CheckCircleOutlineIcon onClick={this.changeCompletion} />
         )}
+        <CancelIcon onClick={this.deleteWatch} />
       </div>
     );
   }

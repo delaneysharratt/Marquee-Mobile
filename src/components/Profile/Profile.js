@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import './Profile.css';
 
 //COMPONENT IMPORTS
-import Collection from '../Collection/Collection';
+import ProfileList from '../ProfileList/ProfileList';
 
 class Profile extends Component {
   render() {
@@ -14,7 +14,7 @@ class Profile extends Component {
         <div>
           <h1 id="welcome">Welcome, {this.props.user.username}!</h1>
         </div>
-        <Collection />
+        <ProfileList />
       </div>
     );
   }
