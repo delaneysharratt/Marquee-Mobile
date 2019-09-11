@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+//COMPONENT IMPORTS
 import ProfileItem from '../ProfileItem/ProfileItem';
 
 class ProfileList extends Component {
-  //Load Profile Profile on page load
+  //Load User Profile on page load
   componentDidMount() {
     this.getProfile();
   }

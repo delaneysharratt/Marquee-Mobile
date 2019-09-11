@@ -22,4 +22,28 @@ router.get('/', (req, res) => {
     });
 });
 
+/** GET ROUTE **/
+router.get('/:username', (req, res) => {
+  const friend = req.params.username;
+  console.log(friend);
+
+  const queryText = `
+  SELECT "user".username, "user_id", "title", "poster", "rating" FROM "watch"
+  JOIN "user" ON "user".id = "watch".user_id
+  WHERE "username" = $1 AND "completed" = true
+  ORDER BY "rating" DESC;
+  `;
+
+  pool
+    .query(queryText, [friend])
+    .then(result => {
+      console.log('Friend watches:', result.rows);
+      res.send(result.rows);
+    })
+    .catch(err => {
+      console.log('Error in friend router GET:', err);
+      res.sendStatus(500);
+    });
+});
+
 module.exports = router;
