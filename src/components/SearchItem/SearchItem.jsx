@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 //MATERIAL-UI IMPORTS
-import AddIcon from '@material-ui/icons/Add';
+import { AddCircle } from '@material-ui/icons';
 
 class SearchItem extends Component {
   state = {
@@ -49,7 +49,7 @@ class SearchItem extends Component {
           src={`https://image.tmdb.org/t/p/w92/${this.props.watch.poster_path}`}
         />
         <br />
-        <AddIcon onClick={this.addWatch} />
+        <AddCircle onClick={this.addWatch} fontSize="small" />
       </div>
     );
   }

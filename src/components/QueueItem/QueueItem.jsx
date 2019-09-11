@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 //MATERIAL-UI IMPORTS
-import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
-import CheckCircleIcon from '@material-ui/icons/CheckCircle';
-import CancelIcon from '@material-ui/icons/Cancel';
+import { CheckCircleOutline, CheckCircle, Cancel } from '@material-ui/icons';
 
 class QueueItem extends Component {
   //re-fetches Queue
@@ -44,11 +42,11 @@ class QueueItem extends Component {
         />
         <br />
         {isCompleted ? (
-          <CheckCircleIcon onClick={this.changeCompletion} />
+          <CheckCircle onClick={this.changeCompletion} fontSize="small"/>
         ) : (
-          <CheckCircleOutlineIcon onClick={this.changeCompletion} />
+            <CheckCircleOutline onClick={this.changeCompletion} fontSize="small"/>
         )}
-        <CancelIcon onClick={this.deleteWatch} />
+        <Cancel onClick={this.deleteWatch} fontSize="small"/>
       </div>
     );
   }

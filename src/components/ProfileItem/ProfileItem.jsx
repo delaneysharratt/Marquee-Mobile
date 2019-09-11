@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 //MATERIAL-UI IMPORTS
-import Rating from '@material-ui/lab/Rating';
-import CancelIcon from '@material-ui/icons/Cancel';
+import { Rating } from '@material-ui/lab';
+import { Cancel } from '@material-ui/icons';
 
 class ProfileItem extends Component {
   //re-fetches Profile
@@ -46,11 +46,12 @@ class ProfileItem extends Component {
         />
         <br />
         <Rating
-          name={this.props.watch.id}
+          name={this.props.watch.title}
           value={this.props.watch.rating}
           onClick={this.updateRating}
+          size="small"
         />
-        <CancelIcon onClick={this.deleteWatch} />
+        <Cancel onClick={this.deleteWatch} fontSize="small"/>
       </div>
     );
   }
