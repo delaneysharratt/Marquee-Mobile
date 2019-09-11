@@ -1,10 +1,9 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
-const axios = require('axios');
 
 /** GET (QUEUE) ROUTE **/
-router.get('/', (req, res) => {
+router.get('/queue', (req, res) => {
   const user = req.user.id;
   const queryText = `SELECT * FROM "watch" WHERE "user_id" = $1 
                      ORDER BY "completed" ASC`;
@@ -76,9 +75,9 @@ router.delete('/:id', (req, res) => {
     });
 });
 
-/** PUT ROUTE **/
-router.put('/:id', (req, res) => {
-  console.log('Updating watch completion...');
+/** PUT (COMPLETED) ROUTE **/
+router.put('/completed/:id', (req, res) => {
+  console.log('Updating watch status...');
   const idToUpdate = req.params.id;
 
   const queryText = `UPDATE "watch" SET "completed" = NOT "completed" WHERE "id" = $1`;
@@ -88,7 +87,25 @@ router.put('/:id', (req, res) => {
       res.sendStatus(201);
     })
     .catch(err => {
-      console.log('Error in watch router PUT:', err);
+      console.log('Error in watch router PUT (completed):', err);
+      res.sendStatus(500);
+    });
+});
+
+/** PUT (RATING) ROUTE **/
+router.put('/rating/:id', (req, res) => {
+  console.log('Updating watch rating...');
+  const rating = req.body.rating;
+  const idToUpdate = req.params.id;
+
+  const queryText = `UPDATE "watch" SET "rating" = $1 WHERE "id" = $2`;
+  pool
+    .query(queryText, [rating, idToUpdate])
+    .then(() => {
+      res.sendStatus(201);
+    })
+    .catch(err => {
+      console.log('Error in watch router PUT (rating):', err);
       res.sendStatus(500);
     });
 });

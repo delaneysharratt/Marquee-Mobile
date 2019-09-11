@@ -10,7 +10,7 @@ import ProfileList from '../ProfileList/ProfileList';
 class Profile extends Component {
   render() {
     return (
-      <div class="Profile">
+      <div className="Profile">
         <div>
           <h1 id="welcome">Welcome, {this.props.user.username}!</h1>
         </div>
