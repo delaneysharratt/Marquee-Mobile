@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {
   HashRouter as Router,
   Route,
@@ -6,19 +7,20 @@ import {
   Switch
 } from 'react-router-dom';
 
-import { connect } from 'react-redux';
+//STYLING IMPORTS
+import './App.css';
 
+//COMPONENT IMPORTS
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import Header from '../Header/Header';
 import Nav from '../Nav/Nav';
 
-import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-
+//ROUTE COMPONENTS
 import Discover from '../Discover/Discover';
-import Profile from '../Profile/Profile';
 import Queue from '../Queue/Queue';
-
-import './App.css';
+import Profile from '../Profile/Profile';
 import FriendList from '../FriendList/FriendList';
+import Friend from '../Friend/Friend';
 
 class App extends Component {
   componentDidMount() {
@@ -41,6 +43,7 @@ class App extends Component {
             <ProtectedRoute exact path="/queue" component={Queue} />
             <ProtectedRoute exact path="/profile" component={Profile} />
             <ProtectedRoute exact path="/friends" component={FriendList} />
+            <ProtectedRoute exact path="/:username" component={Friend} />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
           </Switch>

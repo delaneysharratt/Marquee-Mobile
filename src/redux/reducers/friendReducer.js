@@ -1,6 +1,8 @@
 const friendReducer = (state = [], action) => {
   switch (action.type) {
-    case 'SET_FRIENDS':
+    case 'SET_FRIEND_LIST':
+      return action.payload;
+    case 'SET_FRIEND':
       return action.payload;
     default:
       return state;
