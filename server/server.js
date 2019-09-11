@@ -11,6 +11,7 @@ const passport = require('./strategies/user.strategy');
 const userRouter = require('./routes/user.router');
 const searchRouter = require('./routes/search.router');
 const watchRouter = require('./routes/watch.router');
+const friendRouter = require('./routes/friend.router');
 
 /** ---------- MIDDLEWARE ---------- **/
 app.use(bodyParser.json());
@@ -27,6 +28,7 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 app.use('/api/search', searchRouter);
 app.use('/api/watch', watchRouter);
+app.use('/api/friend', friendRouter);
 
 // Serve static files //
 app.use(express.static('build'));

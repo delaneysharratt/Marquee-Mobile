@@ -5,7 +5,7 @@ import { put, takeLatest } from 'redux-saga/effects';
 function* fetchWatches(action) {
   try {
     let response = yield axios.get('/api/watch/queue');
-    console.log('Saga search response:', response.data);
+    console.log('Saga response for Queue:', response.data);
     yield put({
       type: 'SET_WATCHES',
       payload: response.data
@@ -58,7 +58,7 @@ function* updateCompleted(action) {
 function* fetchProfile(action) {
   try {
     let response = yield axios.get('/api/watch/profile');
-    console.log('Saga search response:', response.data);
+    console.log('Saga response for Profile:', response.data);
     yield put({
       type: 'SET_PROFILE',
       payload: response.data

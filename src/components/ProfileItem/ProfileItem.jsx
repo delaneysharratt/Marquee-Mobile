@@ -6,8 +6,8 @@ import { Rating } from '@material-ui/lab';
 import { Cancel } from '@material-ui/icons';
 
 class ProfileItem extends Component {
-  //re-fetches Profile
-  //after updating watch
+  //re-fetches Profile after
+  //updating watch rating
   getProfile() {
     this.props.dispatch({
       type: 'FETCH_PROFILE'
@@ -51,7 +51,7 @@ class ProfileItem extends Component {
           onClick={this.updateRating}
           size="small"
         />
-        <Cancel onClick={this.deleteWatch} fontSize="small"/>
+        <Cancel onClick={this.deleteWatch} fontSize="small" />
       </div>
     );
   }
