@@ -17,6 +17,9 @@ const Nav = props => (
         <Link className="nav-link" to="/profile">
           Profile
         </Link>
+        <Link className="nav-link" to="/friends">
+          Friends
+        </Link>
       </>
     )}
   </div>

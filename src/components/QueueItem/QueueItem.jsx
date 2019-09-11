@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 import { CheckCircleOutline, CheckCircle, Cancel } from '@material-ui/icons';
 
 class QueueItem extends Component {
-  //re-fetches Queue
-  //after updating watch
+  //re-fetches Queue after
+  //updating watch completion
   getQueue() {
     this.props.dispatch({
       type: 'FETCH_WATCHES'
@@ -42,11 +42,14 @@ class QueueItem extends Component {
         />
         <br />
         {isCompleted ? (
-          <CheckCircle onClick={this.changeCompletion} fontSize="small"/>
+          <CheckCircle onClick={this.changeCompletion} fontSize="small" />
         ) : (
-            <CheckCircleOutline onClick={this.changeCompletion} fontSize="small"/>
+          <CheckCircleOutline
+            onClick={this.changeCompletion}
+            fontSize="small"
+          />
         )}
-        <Cancel onClick={this.deleteWatch} fontSize="small"/>
+        <Cancel onClick={this.deleteWatch} fontSize="small" />
       </div>
     );
   }
