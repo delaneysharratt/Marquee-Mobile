@@ -14,15 +14,15 @@ class QueueItem extends Component {
       type: 'FETCH_WATCHES'
     });
   }
-  
+
   //switches "completed" to true/false
   changeCompletion = () => {
     this.props.dispatch({
-      type: 'UPDATE_COMPLETION',
+      type: 'UPDATE_COMPLETED',
       payload: this.props.watch.id
     });
     this.getQueue();
-  };  
+  };
 
   //deletes watch from Queue/Collection
   deleteWatch = event => {

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 //MATERIAL-UI IMPORTS
 import AddIcon from '@material-ui/icons/Add';
 
-class SearchListItem extends Component {
+class SearchItem extends Component {
   state = {
     watch: {
       title: this.props.watch.title,
@@ -18,10 +18,8 @@ class SearchListItem extends Component {
     let title = '';
     if (this.props.watch.title) {
       title = this.props.watch.title;
-      console.log('has title');
     } else {
       title = this.props.watch.name;
-      console.log('has name');
     }
     this.setState({
       watch: {
@@ -57,4 +55,4 @@ class SearchListItem extends Component {
   }
 }
 
-export default connect()(SearchListItem);
+export default connect()(SearchItem);
