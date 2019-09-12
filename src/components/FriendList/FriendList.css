@@ -1,0 +1,15 @@
+.FriendList {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-content: space-around;
+  margin: 10%;
+}
+
+.FriendItem {
+  width: 50%;
+  margin: 0.5em 0;
+}
+
+.FriendSearch {
+  margin: auto;
+}

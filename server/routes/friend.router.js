@@ -2,7 +2,7 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-/** GET ROUTE **/
+/** GET (FRIEND LIST) ROUTE **/
 router.get('/', (req, res) => {
   const user = req.user.id;
   const queryText = `
@@ -17,12 +17,33 @@ router.get('/', (req, res) => {
       res.send(result.rows);
     })
     .catch(err => {
-      console.log('Error in friend router GET:', err);
+      console.log('Error in friend router GET (friend list):', err);
       res.sendStatus(500);
     });
 });
 
-/** GET ROUTE **/
+/** GET (FRIEND SEARCH) ROUTE **/
+router.get('/search/:username', (req, res) => {
+  const friend = req.params.username + '%';
+  console.log(friend);
+
+  const queryText = `
+  SELECT "username" FROM "user" WHERE "username" LIKE $1
+  `;
+
+  pool
+    .query(queryText, [friend])
+    .then(result => {
+      console.log('Friend search results:', result.rows);
+      res.send(result.rows);
+    })
+    .catch(err => {
+      console.log('Error in friend router GET (friend search):', err);
+      res.sendStatus(500);
+    });
+});
+
+/** GET (FRIEND PROFILE) ROUTE **/
 router.get('/:username', (req, res) => {
   const friend = req.params.username;
   console.log(friend);
@@ -41,7 +62,7 @@ router.get('/:username', (req, res) => {
       res.send(result.rows);
     })
     .catch(err => {
-      console.log('Error in friend router GET:', err);
+      console.log('Error in friend router GET (friend profile):', err);
       res.sendStatus(500);
     });
 });

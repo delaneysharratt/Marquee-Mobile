@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+//STYLING IMPORTS
+import './Search.css';
+
 //COMPONENT IMPORTS
 import SearchForm from '../SearchForm/SearchForm';
 import SearchList from '../SearchList/SearchList';
