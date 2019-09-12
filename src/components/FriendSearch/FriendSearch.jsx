@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 //MATERIAL-UI IMPORTS
-import { TextField } from '@material-ui/core';
+import { TextField, Divider } from '@material-ui/core';
+import { AccountCircle } from '@material-ui/icons';
 
 class FriendSearch extends Component {
   constructor(props) {
     super(props);
     this.setSearchName = this.setSearchName.bind(this);
+  }
+
+  //Reset search form on page load
+  componentDidMount() {
+    this.findUsers();
   }
 
   state = {
@@ -39,9 +46,34 @@ class FriendSearch extends Component {
     });
   };
 
+  seeFriend = friend => {
+    this.props.dispatch({
+      type: 'CLEAR_USER_SEARCH',
+      payload: this.state.searchName
+    });
+    this.props.history.push(`/${friend.username}`);
+  };
+
   render() {
+    //for each item in redux state.findUser
+    //render a friend search list item for that user
+    let friendSearchList = this.props.findUser.map((friend, i) => {
+      return (
+        <div
+          key={i}
+          className="FriendItem"
+          onClick={() => this.seeFriend(friend)}
+        >
+          <AccountCircle fontSize="large" />
+          {friend.username}
+          <Divider />
+        </div>
+      );
+    });
+
     return (
       <div className="FriendSearch">
+        {friendSearchList}
         <TextField
           onChange={this.setSearchName}
           id="friend-search"
@@ -55,4 +87,8 @@ class FriendSearch extends Component {
   }
 }
 
-export default connect()(FriendSearch);
+const mapStateToProps = state => ({
+  findUser: state.findUser
+});
+
+export default withRouter(connect(mapStateToProps)(FriendSearch));

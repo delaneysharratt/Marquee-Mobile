@@ -17,6 +17,7 @@ import Nav from '../Nav/Nav';
 
 //ROUTE COMPONENTS
 import Discover from '../Discover/Discover';
+import Search from '../Search/Search';
 import Queue from '../Queue/Queue';
 import Profile from '../Profile/Profile';
 import FriendList from '../FriendList/FriendList';
@@ -40,6 +41,7 @@ class App extends Component {
             If the user is not logged in, the ProtectedRoute will show the 'Login' or 'Register' page.
             Even though it seems like they are different pages, the user is always on localhost:3000/discover */}
             <ProtectedRoute exact path="/discover" component={Discover} />
+            <ProtectedRoute exact path="/search" component={Search} />
             <ProtectedRoute exact path="/queue" component={Queue} />
             <ProtectedRoute exact path="/profile" component={Profile} />
             <ProtectedRoute exact path="/friends" component={FriendList} />

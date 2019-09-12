@@ -1,7 +1,5 @@
 const friendReducer = (state = [], action) => {
   switch (action.type) {
-    case 'SET_FRIEND_LIST':
-      return action.payload;
     case 'SET_FRIEND':
       return action.payload;
     default:
@@ -9,6 +7,6 @@ const friendReducer = (state = [], action) => {
   }
 };
 
-// friends will be on the redux state at:
-// state.friends
+// friend will be on the redux state at:
+// state.friend
 export default friendReducer;

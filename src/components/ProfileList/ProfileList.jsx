@@ -21,7 +21,7 @@ class ProfileList extends Component {
 
   render() {
     //for each item in redux state.watch
-    //render a ProfileListItem for that watch
+    //render a ProfileItem for that watch
     let profileList = this.props.watches.map((watch, i) => {
       return <ProfileItem key={i} watch={watch} />;
     });
