@@ -1,13 +1,16 @@
-.Search {
+.Friend {
   text-align: center;
+  margin: 10% 0;
+}
+
+.FriendHeader {
   margin: 10%;
 }
 
-.SearchList {
+.FriendWatchList {
   display: inline-flex;
   flex-wrap: wrap;
   align-content: space-around;
-  margin-bottom: 10%;
 }
 
 .Poster {

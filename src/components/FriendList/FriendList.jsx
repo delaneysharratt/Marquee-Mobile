@@ -30,7 +30,7 @@ class FriendList extends Component {
 
   render() {
     //for each item in redux state.friends
-    //render a FriendItem for that user
+    //render a friend list item for that user
     let friendList = this.props.friends.map((friend, i) => {
       return (
         <div
@@ -57,7 +57,7 @@ class FriendList extends Component {
 }
 
 const mapStateToProps = state => ({
-  friends: state.friends
+  friends: state.friendList
 });
 
 export default withRouter(connect(mapStateToProps)(FriendList));
