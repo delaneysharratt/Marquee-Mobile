@@ -2,7 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
+//STYLING IMPORTS
+import './FriendList.css';
+
+//COMPONENT IMPORTS
+import FriendSearch from '../FriendSearch/FriendSearch';
+
 //MATERIAL-UI IMPORTS
+import { Divider } from '@material-ui/core';
 import { AccountCircle } from '@material-ui/icons';
 
 class FriendList extends Component {
@@ -33,15 +40,17 @@ class FriendList extends Component {
         >
           <AccountCircle fontSize="large" />
           {friend.username}
+          <Divider />
         </div>
       );
     });
 
     return (
       <div className="FriendList">
-        <h1>Your FriendList</h1>
         {friendList}
-        <br />
+        <div className="FriendSearch">
+          <FriendSearch />
+        </div>
       </div>
     );
   }

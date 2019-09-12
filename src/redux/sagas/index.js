@@ -5,6 +5,7 @@ import userSaga from './userSaga';
 import searchSaga from './searchSaga';
 import queueSaga from './queueSaga';
 import profileSaga from './profileSaga';
+import findUser from './findUserSaga';
 import friendSaga from './friendSaga';
 
 // rootSaga is the primary saga.
@@ -22,6 +23,7 @@ export default function* rootSaga() {
     searchSaga(),
     queueSaga(),
     profileSaga(),
+    findUser(),
     friendSaga()
   ]);
 }

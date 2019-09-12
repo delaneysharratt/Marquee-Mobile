@@ -5,27 +5,34 @@ import { withRouter } from 'react-router-dom';
 //COMPONENT IMPORTS
 // import ProfileItem from '../ProfileItem/ProfileItem';
 
+//MATERIAL-UI IMPORTS
+import { PersonAdd } from '@material-ui/icons';
+
 class User extends Component {
+  state = {
+    username: this.props.match.params.username
+  };
+
   //Load Friend Profile on page load
   componentDidMount() {
     this.getFriend();
   }
 
   getFriend() {
-    let user = this.props.match.params;
-    console.log(user);
-
     this.props.dispatch({
       type: 'FETCH_FRIEND',
-      payload: user.username
+      payload: this.state.username
     });
   }
 
   render() {
+    console.log(this.state);
+
     return (
       <div className="Friend">
         <div>
           <h1 id="welcome">Welcome!</h1>
+          <PersonAdd />
         </div>
       </div>
     );

@@ -5,6 +5,7 @@ import user from './userReducer';
 import search from './searchReducer';
 import queue from './queueReducer';
 import profile from './profileReducer';
+import findUser from './findUserReducer';
 import friends from './friendReducer';
 
 // rootReducer is the primary reducer for our entire project
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
   search, //will contain the results of API search
   queue, //will contain all the watches added to a user's queue
   profile, //will contain all of a user's completed watches on profile
+  findUser, // will contain all user search results from friend search
   friends //will contain all of a user's added friends
 });
 

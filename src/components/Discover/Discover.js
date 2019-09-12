@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-//STYLING IMPORTS
-import './Discover.css';
-
 //COMPONENT IMPORTS
 import Search from '../Search/Search';
 
