@@ -9,7 +9,7 @@ import './Friend.css';
 import FriendItem from '../FriendItem/FriendItem';
 
 //MATERIAL-UI IMPORTS
-import { AccountCircle } from '@material-ui/icons';
+import { PersonAdd } from '@material-ui/icons';
 
 class Friend extends Component {
   state = {
@@ -28,6 +28,14 @@ class Friend extends Component {
     });
   }
 
+  addFriend = () => {
+    console.log('Adding friend...');
+    this.props.dispatch({
+      type: 'ADD_FRIEND',
+      payload: this.props.selected
+    });
+  };
+
   render() {
     //for each item in redux state.watch
     //render a FriendItem for that watch
@@ -38,7 +46,10 @@ class Friend extends Component {
     return (
       <div className="Friend">
         <div className="FriendHeader">
-          <h2><AccountCircle fontSize="large"/>{this.state.username}</h2>
+          <h1>
+            {this.state.username}
+            <PersonAdd onClick={this.addFriend} fontSize="large" />
+          </h1>
         </div>
         <div className="FriendWatchList">{friendWatchList}</div>
       </div>
@@ -47,7 +58,8 @@ class Friend extends Component {
 }
 
 const mapStateToProps = state => ({
-  friend: state.friend
+  friend: state.friend,
+  selected: state.selected
 });
 
 export default withRouter(connect(mapStateToProps)(Friend));

@@ -48,7 +48,7 @@ class Search extends Component {
 
   render() {
     return (
-      <div className="Search">
+      <div className="SearchForm">
         <TextField
           onChange={this.setSearchTerm}
           id="standard-search"

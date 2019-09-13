@@ -30,9 +30,25 @@ function* fetchFriend(action) {
   }
 }
 
+//worker Saga: will be fired on "ADD_FRIEND" actions
+function* addFriend(action) {
+  try {
+    let friend = action.payload;
+    console.log(friend);
+    
+    yield axios.post('/api/friend', friend);
+    yield put({
+      type: 'FETCH_FRIEND_LIST'
+    });
+  } catch (err) {
+    console.log('Error in friendSaga POST:', err);
+  }
+}
+
 function* friendSaga() {
   yield takeLatest('FETCH_FRIEND_LIST', fetchFriendList);
   yield takeLatest('FETCH_FRIEND', fetchFriend);
+  yield takeLatest('ADD_FRIEND', addFriend);
 }
 
 export default friendSaga;

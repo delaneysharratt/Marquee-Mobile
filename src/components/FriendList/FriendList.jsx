@@ -48,9 +48,7 @@ class FriendList extends Component {
     return (
       <div className="FriendList">
         {friendList}
-        <div className="FriendSearch">
-          <FriendSearch />
-        </div>
+        <FriendSearch />
       </div>
     );
   }

@@ -28,7 +28,7 @@ router.get('/search/:username', (req, res) => {
   console.log(friend);
 
   const queryText = `
-  SELECT "username" FROM "user" WHERE "username" LIKE $1
+  SELECT "id", "username" FROM "user" WHERE "username" LIKE $1
   `;
 
   pool
@@ -63,6 +63,25 @@ router.get('/:username', (req, res) => {
     })
     .catch(err => {
       console.log('Error in friend router GET (friend profile):', err);
+      res.sendStatus(500);
+    });
+});
+
+/** POST ROUTE **/
+router.post('/', (req, res) => {
+  console.log('Adding friend:', req.body);
+  const user = req.user.id;
+  const friend = req.body.id;
+
+  const queryText = `INSERT INTO "friend" ("user_id", "friend_id")
+                    VALUES ($1, $2)`;
+  pool
+    .query(queryText, [user, friend])
+    .then(() => {
+      res.sendStatus(201);
+    })
+    .catch(err => {
+      console.log('Error in watch router POST:', err);
       res.sendStatus(500);
     });
 });

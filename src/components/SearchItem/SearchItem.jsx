@@ -9,8 +9,7 @@ class SearchItem extends Component {
     watch: {
       title: this.props.watch.title,
       poster: this.props.watch.poster_path,
-      backdrop: this.props.watch.backdrop_path,
-      imdb_id: this.props.watch.imdb
+      backdrop: this.props.watch.backdrop_path
     }
   };
 

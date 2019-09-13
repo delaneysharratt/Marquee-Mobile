@@ -14,7 +14,7 @@ class FriendSearch extends Component {
 
   //Reset search form on page load
   componentDidMount() {
-    this.findUsers();
+    this.clearSearch();
   }
 
   state = {
@@ -22,6 +22,12 @@ class FriendSearch extends Component {
     typing: false,
     typingTimeout: 0
   };
+
+  clearSearch() {
+    this.props.dispatch({
+      type: 'CLEAR_USER_SEARCH'
+    });
+  }
 
   findUsers = event => {
     this.props.dispatch({
@@ -48,8 +54,8 @@ class FriendSearch extends Component {
 
   seeFriend = friend => {
     this.props.dispatch({
-      type: 'CLEAR_USER_SEARCH',
-      payload: this.state.searchName
+      type: 'SELECT_USER',
+      payload: friend
     });
     this.props.history.push(`/${friend.username}`);
   };
@@ -73,15 +79,17 @@ class FriendSearch extends Component {
 
     return (
       <div className="FriendSearch">
+        <div className="FriendSearchForm">
+          <TextField
+            onChange={this.setSearchName}
+            id="friend-search"
+            label="Search for friends..."
+            value={this.state.searchName}
+            type="search"
+            margin="normal"
+          />
+        </div>
         {friendSearchList}
-        <TextField
-          onChange={this.setSearchName}
-          id="friend-search"
-          label="Search for friends..."
-          value={this.state.searchName}
-          type="search"
-          margin="normal"
-        />
       </div>
     );
   }
