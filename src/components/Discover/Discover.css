@@ -1,7 +1,14 @@
 .Discover {
-  margin: auto;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* size and placement */
+  height: 80%;
+  top: 10%;
+  z-index: -1;
   text-align: center;
-  /* background-color: black; */
+  background-color: black;
 }
 
 .Discover img {
