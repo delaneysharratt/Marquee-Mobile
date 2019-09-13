@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 //STYLING IMPORTS
-import './FriendList.css';
+import './Friends.css';
 
 //COMPONENT IMPORTS
 import FriendSearch from '../FriendSearch/FriendSearch';
@@ -46,8 +46,8 @@ class FriendList extends Component {
     });
 
     return (
-      <div className="FriendList">
-        {friendList}
+      <div className="Friends">
+        <div className="FriendList">{friendList}</div>
         <FriendSearch />
       </div>
     );

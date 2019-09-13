@@ -7,7 +7,7 @@ const Nav = props => (
   <div className="nav">
     {/* Show navigation links if the user is logged in */}
     {props.user.id && (
-      <>
+      <div className="nav-display">
         <Link className="nav-link" to="/discover">
           Discover
         </Link>
@@ -23,7 +23,7 @@ const Nav = props => (
         <Link className="nav-link" to="/friends">
           Friends
         </Link>
-      </>
+      </div>
     )}
   </div>
 );

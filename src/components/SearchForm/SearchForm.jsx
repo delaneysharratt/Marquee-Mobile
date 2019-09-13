@@ -51,7 +51,7 @@ class Search extends Component {
       <div className="SearchForm">
         <TextField
           onChange={this.setSearchTerm}
-          id="standard-search"
+          id="searchWatches"
           label="Search movies..."
           value={this.state.searchTerm}
           type="search"

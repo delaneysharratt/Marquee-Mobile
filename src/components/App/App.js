@@ -20,8 +20,8 @@ import Discover from '../Discover/Discover';
 import Search from '../Search/Search';
 import Queue from '../Queue/Queue';
 import Profile from '../Profile/Profile';
-import FriendList from '../FriendList/FriendList';
-import Friend from '../Friend/Friend';
+import Friends from '../Friends/Friends';
+import Person from '../Person/Person';
 
 class App extends Component {
   componentDidMount() {
@@ -44,8 +44,8 @@ class App extends Component {
             <ProtectedRoute exact path="/search" component={Search} />
             <ProtectedRoute exact path="/queue" component={Queue} />
             <ProtectedRoute exact path="/profile" component={Profile} />
-            <ProtectedRoute exact path="/friends" component={FriendList} />
-            <ProtectedRoute exact path="/:username" component={Friend} />
+            <ProtectedRoute exact path="/friends" component={Friends} />
+            <ProtectedRoute exact path="/:username" component={Person} />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
           </Switch>

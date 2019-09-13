@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 //STYLING IMPORTS
-import './Friend.css';
+import './Person.css';
 
 //COMPONENT IMPORTS
-import FriendItem from '../FriendItem/FriendItem';
+import PersonItem from '../PersonItem/PersonItem';
 
 //MATERIAL-UI IMPORTS
 import { PersonAdd } from '@material-ui/icons';
@@ -39,8 +39,8 @@ class Friend extends Component {
   render() {
     //for each item in redux state.watch
     //render a FriendItem for that watch
-    let friendWatchList = this.props.friend.map((watch, i) => {
-      return <FriendItem key={i} watch={watch} />;
+    let personWatchList = this.props.friend.map((watch, i) => {
+      return <PersonItem key={i} watch={watch} />;
     });
 
     return (
@@ -51,7 +51,7 @@ class Friend extends Component {
             <PersonAdd onClick={this.addFriend} fontSize="large" />
           </h1>
         </div>
-        <div className="FriendWatchList">{friendWatchList}</div>
+        <div className="FriendWatchList">{personWatchList}</div>
       </div>
     );
   }

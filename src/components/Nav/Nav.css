@@ -1,12 +1,18 @@
 .nav {
-  display: flex;
-  align-content: space-between;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
   overflow: hidden;
+  text-align: center;
   background-color: darkslateblue;
 }
 
+.nav-display {
+  display: inline-flex;
+  align-content: space-around;
+}
+
 .nav-link {
-  float: right;
   color: #f2f2f2;
   background-color: darkslateblue;
   text-align: center;
@@ -15,7 +21,7 @@
   font-size: 15px;
   /* these last two make the logout button in
   the nav bar look like another link */
-  border:none;
+  border: none;
   cursor: pointer;
-  outline:0;
+  outline: 0;
 }

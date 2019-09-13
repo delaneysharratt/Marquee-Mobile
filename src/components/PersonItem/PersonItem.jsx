@@ -34,6 +34,7 @@ class FriendItem extends Component {
           name={this.props.watch.title}
           value={this.props.watch.rating}
           size="small"
+          readOnly
         />
         <br />
         <AddCircle onClick={this.addWatch} fontSize="small" />

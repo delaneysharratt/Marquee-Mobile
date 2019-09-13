@@ -3,7 +3,10 @@
 }
 
 .SearchForm {
-  margin: 10%;
+  position: fixed;
+  width: 100%;
+  margin: 10% 0 0;
+  bottom: 15%;
 }
 
 .SearchList {

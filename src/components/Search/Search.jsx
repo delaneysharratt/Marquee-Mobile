@@ -12,8 +12,8 @@ class Search extends Component {
   render() {
     return (
       <div className="Search">
-        <SearchList />
         <SearchForm />
+        <SearchList />
       </div>
     );
   }
