@@ -1,6 +1,9 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0px;
+    position: absolute;
+    width: 100%;
+    overflow: scroll;
+    font-family: 'Roboto', sans-serif;
+    margin: 20% 0 10%;
 }
 
 .alert {
