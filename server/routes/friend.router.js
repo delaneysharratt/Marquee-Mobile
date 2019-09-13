@@ -49,7 +49,7 @@ router.get('/:username', (req, res) => {
   console.log(friend);
 
   const queryText = `
-  SELECT "user".username, "user_id", "title", "poster", "rating" FROM "watch"
+  SELECT "user".username, "user_id", "title", "poster", "backdrop", "rating" FROM "watch"
   JOIN "user" ON "user".id = "watch".user_id
   WHERE "username" = $1 AND "completed" = true
   ORDER BY "rating" DESC;

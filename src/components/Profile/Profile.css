@@ -1,4 +1,9 @@
 .Profile {
+  position: absolute;
+  overflow: scroll;
+  height: 80%;
+  top: 10%;
+  z-index: -1;
   text-align: center;
 }
 
@@ -6,7 +11,6 @@
   display: inline-flex;
   flex-wrap: wrap;
   align-content: space-around;
-  margin-bottom: 10%;
 }
 
 .Poster {
