@@ -10,6 +10,7 @@ import profile from './profileReducer';
 import friendList from './friendListReducer';
 import findUser from './findUserReducer';
 import friend from './friendReducer';
+import selected from './selectedReducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -28,7 +29,8 @@ const rootReducer = combineReducers({
 
   friendList, //will contain all of a user's added friends
   findUser, // will contain all user search results from friend search
-  friend //will contain all of a friend's watches
+  friend, //will contain all of a friend's watches
+  selected //will contain the username and id of the friend being viewed
 });
 
 export default rootReducer;

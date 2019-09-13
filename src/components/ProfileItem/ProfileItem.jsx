@@ -51,6 +51,7 @@ class ProfileItem extends Component {
           onClick={this.updateRating}
           size="small"
         />
+        <br />
         <Cancel onClick={this.deleteWatch} fontSize="small" />
       </div>
     );
