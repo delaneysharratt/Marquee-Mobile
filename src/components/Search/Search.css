@@ -2,7 +2,6 @@
   position: fixed;
   height: 80%;
   top: 10%;
-  z-index: -1;
   text-align: center;
 }
 
@@ -22,4 +21,24 @@
 
 .Poster {
   margin: 1em;
+}
+
+.posterPlaceholder {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 92px;
+  height: 138px;
+  background-color: black;
+  text-transform: uppercase;
+  color:whitesmoke;
+  margin-bottom: 4px;
+}
+
+.posterPlaceholder p {
+  margin : auto 0;
+}
+
+.poster-missing {
+  font-size: 8px;
 }

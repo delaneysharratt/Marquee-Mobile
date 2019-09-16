@@ -27,6 +27,7 @@ class Queue extends Component {
     });
     return (
       <div className="Queue">
+        <h2>WELCOME TO YOUR QUEUE</h2>
         <div className="QueueList">{queueList}</div>
       </div>
     );

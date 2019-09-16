@@ -23,8 +23,8 @@ router.get('/queue', (req, res) => {
 /** GET (PROFILE) ROUTE **/
 router.get('/profile', (req, res) => {
   const user = req.user.id;
-  const queryText = `SELECT * FROM "watch" WHERE "user_id" = $1 
-                    AND "completed" = true ORDER BY "rating" DESC`;
+  const queryText = `SELECT * FROM "watch" WHERE "user_id" = $1 AND "completed" = true 
+                    ORDER BY CASE WHEN "rating" = 0 THEN 0 ELSE 1 END, "rating" DESC`;
   pool
     .query(queryText, [user])
     .then(result => {

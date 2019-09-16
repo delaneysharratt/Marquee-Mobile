@@ -43,10 +43,21 @@ class SearchItem extends Component {
   render() {
     return (
       <div key={this.props.watch.title} className="Poster">
-        <img
-          alt={this.props.watch.title}
-          src={`https://image.tmdb.org/t/p/w92/${this.props.watch.poster_path}`}
-        />
+        {this.props.watch.poster_path ? (
+          <img
+            alt={this.props.watch.title}
+            src={`https://image.tmdb.org/t/p/w92/${this.props.watch.poster_path}`}
+          />
+        ) : (
+          <div className="posterPlaceholder">
+            <p>
+              {this.props.watch.title
+                ? this.props.watch.title
+                : this.props.watch.name}
+              <br/><span className="poster-missing">(Unavailable)</span>
+            </p>
+          </div>
+        )}
         <br />
         <AddCircle onClick={this.addWatch} fontSize="small" />
       </div>
