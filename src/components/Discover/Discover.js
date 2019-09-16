@@ -5,41 +5,34 @@ import { connect } from 'react-redux';
 import './Discover.css';
 
 class Discover extends Component {
-  state = {
-    feature: []
-  };
-
-  //Load User Profile on page load
+  //Load Discover on page load
   componentDidMount() {
-    this.getProfile();
+    this.getDiscover();
   }
 
-  getProfile() {
+  getDiscover() {
     this.props.dispatch({
-      type: 'FETCH_PROFILE'
+      type: 'FETCH_DISCOVER'
     });
   }
 
   render() {
-    let feature = this.props.feature.slice(0, 3).map((watch, i) => {
+    let recommendations = this.props.discover.map((watch, i) => {
       return (
         <img
+          key={watch.id}
           alt={watch.title}
           src={`https://image.tmdb.org/t/p/w500/${watch.backdrop}`}
         />
       );
     });
 
-    return (
-      <div className="Discover">
-        {feature}
-      </div>
-    );
+    return <div className="Discover">{recommendations}</div>;
   }
 }
 
 const mapStateToProps = state => ({
-  feature: state.profile
+  discover: state.discover
 });
 
 export default connect(mapStateToProps)(Discover);

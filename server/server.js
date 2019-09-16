@@ -9,6 +9,7 @@ const passport = require('./strategies/user.strategy');
 
 /** ---------- ROUTE INCLUDES ---------- **/
 const userRouter = require('./routes/user.router');
+const discoverRouter = require('./routes/discover.router');
 const searchRouter = require('./routes/search.router');
 const watchRouter = require('./routes/watch.router');
 const friendRouter = require('./routes/friend.router');
@@ -26,6 +27,7 @@ app.use(passport.session());
 
 /** ---------- ROUTES ---------- **/
 app.use('/api/user', userRouter);
+app.use('/api/discover', discoverRouter);
 app.use('/api/search', searchRouter);
 app.use('/api/watch', watchRouter);
 app.use('/api/friend', friendRouter);

@@ -89,7 +89,7 @@ class FriendSearch extends Component {
             margin="normal"
           />
         </div>
-        {friendSearchList}
+        <div className="FriendSearchList">{friendSearchList}</div>
       </div>
     );
   }

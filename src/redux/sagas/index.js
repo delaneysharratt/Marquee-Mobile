@@ -2,6 +2,9 @@ import { all } from 'redux-saga/effects';
 import loginSaga from './loginSaga';
 import registrationSaga from './registrationSaga';
 import userSaga from './userSaga';
+
+//component view sagas
+import discoverSaga from './discoverSaga';
 import searchSaga from './searchSaga';
 import queueSaga from './queueSaga';
 import profileSaga from './profileSaga';
@@ -20,6 +23,8 @@ export default function* rootSaga() {
     loginSaga(),
     registrationSaga(),
     userSaga(),
+    // views
+    discoverSaga(),
     searchSaga(),
     queueSaga(),
     profileSaga(),
