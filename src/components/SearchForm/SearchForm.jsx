@@ -5,15 +5,8 @@ import { connect } from 'react-redux';
 import TextField from '@material-ui/core/TextField';
 
 class Search extends Component {
-  constructor(props) {
-    super(props);
-    this.setSearchTerm = this.setSearchTerm.bind(this);
-  }
-
   state = {
-    searchTerm: '',
-    typing: false,
-    typingTimeout: 0
+    searchTerm: ''
   };
 
   fetchSearch = event => {
@@ -31,19 +24,15 @@ class Search extends Component {
   };
 
   setSearchTerm = event => {
-    const self = this;
-
-    if (self.state.typingTimeout) {
-      clearTimeout(self.state.typingTimeout);
-    }
-
-    self.setState({
-      searchTerm: event.target.value,
-      typing: false,
-      typingTimeout: setTimeout(function() {
-        self.fetchSearch(self.state.searchTerm);
-      }, 300)
+    this.setState({
+      searchTerm: event.target.value
     });
+  };
+
+  handleEnter = event => {
+    if (event.key === 'Enter') {
+      this.fetchSearch();
+    }
   };
 
   render() {
@@ -56,6 +45,7 @@ class Search extends Component {
           value={this.state.searchTerm}
           type="search"
           margin="normal"
+          onKeyPress={this.handleEnter}
         />
       </div>
     );
