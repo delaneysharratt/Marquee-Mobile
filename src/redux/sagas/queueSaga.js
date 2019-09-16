@@ -11,7 +11,7 @@ function* fetchWatches(action) {
       payload: response.data
     });
   } catch (err) {
-    console.log('Error in watchSaga GET (Queue):', err);
+    console.log('Error in queueSaga GET:', err);
   }
 }
 
@@ -24,7 +24,7 @@ function* addWatch(action) {
       type: 'FETCH_WATCHES'
     });
   } catch (err) {
-    console.log('Error in watchSaga POST:', err);
+    console.log('Error in queueSaga POST:', err);
   }
 }
 
@@ -37,7 +37,7 @@ function* deleteWatch(action) {
       type: 'FETCH_WATCHES'
     });
   } catch (err) {
-    console.log('Error in watchSaga DELETE:', err);
+    console.log('Error in queueSaga DELETE:', err);
   }
 }
 
@@ -50,15 +50,15 @@ function* updateCompleted(action) {
       type: 'FETCH_WATCHES'
     });
   } catch (err) {
-    console.log('Error in watchSaga PUT (completed):', err);
+    console.log('Error in queueSaga PUT (completed):', err);
   }
 }
 
-function* watchSaga() {
+function* queueSaga() {
   yield takeLatest('FETCH_WATCHES', fetchWatches);
   yield takeLatest('ADD_WATCH', addWatch);
   yield takeLatest('DELETE_WATCH', deleteWatch);
   yield takeLatest('UPDATE_COMPLETED', updateCompleted);
 }
 
-export default watchSaga;
+export default queueSaga;

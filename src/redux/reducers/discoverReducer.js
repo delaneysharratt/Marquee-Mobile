@@ -1,6 +1,6 @@
-const queueReducer = (state = [], action) => {
+const discoverReducer = (state = [], action) => {
   switch (action.type) {
-    case 'SET_WATCHES':
+    case 'SET_DISCOVER':
       return action.payload;
     default:
       return state;
@@ -8,5 +8,5 @@ const queueReducer = (state = [], action) => {
 };
 
 // watches will be on the redux state at:
-// state.queue
-export default queueReducer;
+// state.discover
+export default discoverReducer;
