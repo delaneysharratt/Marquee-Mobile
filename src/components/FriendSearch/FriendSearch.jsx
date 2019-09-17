@@ -3,8 +3,10 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 //MATERIAL-UI IMPORTS
+import FormControl from '@material-ui/core/FormControl';
+import InputAdornment from '@material-ui/core/InputAdornment';
 import { TextField, Divider } from '@material-ui/core';
-import { AccountCircle } from '@material-ui/icons';
+import { AccountCircle, People } from '@material-ui/icons';
 
 class FriendSearch extends Component {
   constructor(props) {
@@ -80,14 +82,23 @@ class FriendSearch extends Component {
     return (
       <div className="FriendSearch">
         <div className="FriendSearchForm">
-          <TextField
-            onChange={this.setSearchName}
-            id="friend-search"
-            label="Search for friends..."
-            value={this.state.searchName}
-            type="search"
-            margin="normal"
-          />
+          <FormControl>
+            <TextField
+              onChange={this.setSearchName}
+              id="friend-search"
+              label="Search for friends..."
+              value={this.state.searchName}
+              type="search"
+              margin="normal"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <People />
+                  </InputAdornment>
+                )
+              }}
+            />
+          </FormControl>
         </div>
         <div className="FriendSearchList">{friendSearchList}</div>
       </div>
