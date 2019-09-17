@@ -76,6 +76,24 @@ router.delete('/:id', (req, res) => {
     });
 });
 
+/** PUT (PRIORITY) ROUTE **/
+router.put('/priority/:id', (req, res) => {
+  console.log('Updating priority status...');
+  const rating = req.body.priority;
+  const idToUpdate = req.params.id;
+
+  const queryText = `UPDATE "watch" SET "priority" = $1 WHERE "id" = $2`;
+  pool
+    .query(queryText, [rating, idToUpdate])
+    .then(() => {
+      res.sendStatus(201);
+    })
+    .catch(err => {
+      console.log('Error in watch router PUT (priority):', err);
+      res.sendStatus(500);
+    });
+});
+
 /** PUT (COMPLETED) ROUTE **/
 router.put('/completed/:id', (req, res) => {
   console.log('Updating watch status...');

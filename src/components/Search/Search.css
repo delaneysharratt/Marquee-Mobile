@@ -32,10 +32,6 @@
   width: 100px;
 }
 
-.Poster {
-  margin: 1em;
-}
-
 .posterPlaceholder {
   /* sizing and display */
   display: inline-flex;
