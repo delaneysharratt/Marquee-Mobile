@@ -41,6 +41,19 @@ function* deleteWatch(action) {
   }
 }
 
+//worker Saga: will be fired on "UPDATE_PRIORITY" actions
+function* updatePriority(action) {
+  try {
+    let id = action.payload.id;
+    yield axios.put(`./api/watch/priority/${id}`, action.payload);
+    yield put({
+      type: 'FETCH_WATCHES'
+    });
+  } catch (err) {
+    console.log('Error in queueSaga PUT (priority):', err);
+  }
+}
+
 //worker Saga: will be fired on "UPDATE_COMPLETED" actions
 function* updateCompleted(action) {
   try {
@@ -58,6 +71,7 @@ function* queueSaga() {
   yield takeLatest('FETCH_WATCHES', fetchWatches);
   yield takeLatest('ADD_WATCH', addWatch);
   yield takeLatest('DELETE_WATCH', deleteWatch);
+  yield takeLatest('UPDATE_PRIORITY', updatePriority);
   yield takeLatest('UPDATE_COMPLETED', updateCompleted);
 }
 

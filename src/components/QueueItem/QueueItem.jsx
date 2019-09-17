@@ -2,23 +2,29 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 //MATERIAL-UI IMPORTS
-import { CheckCircleOutline, CheckCircle, Cancel } from '@material-ui/icons';
-import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import Snackbar from '@material-ui/core/Snackbar';
-import IconButton from '@material-ui/core/IconButton';
-import CloseIcon from '@material-ui/icons/Close';
+import { CheckCircleOutline, CheckCircle, Cancel } from '@material-ui/icons';
+import FormControl from '@material-ui/core/FormControl';
+import InputLabel from '@material-ui/core/InputLabel';
+import Select from '@material-ui/core/Select';
 
 const styles = theme => ({
-  close: {}
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    width: '50px'
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 85,
+    fontSize: 'small'
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2)
+  }
 });
 
 class QueueItem extends Component {
-  state = {
-    open: false
-  };
-
   //re-fetches Queue after
   //updating watch completion
   getQueue() {
@@ -27,15 +33,28 @@ class QueueItem extends Component {
     });
   }
 
-  //switches "completed" to true/false
-  changeCompletion = event => {
-    event.preventDefault();
+  //updates priority status to selected
+  updatePriority = event => {
+    let update = {
+      id: this.props.watch.id,
+      priority: event.target.value
+    };
+
+    console.log(update);
+
+    this.props.dispatch({
+      type: 'UPDATE_PRIORITY',
+      payload: update
+    });
+    this.getQueue();
+  };
+
+  // //switches "completed" to true/false
+  updateCompleted = event => {
     this.props.dispatch({
       type: 'UPDATE_COMPLETED',
       payload: this.props.watch.id
     });
-
-    this.setState({ open: true });
     this.getQueue();
   };
 
@@ -48,78 +67,42 @@ class QueueItem extends Component {
     this.getQueue();
   };
 
-  handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
-      return;
-    }
-    this.setState({ open: false });
-  };
-
   render() {
     const { classes } = this.props;
     const isCompleted = this.props.watch.completed;
 
     return (
       <div key={this.props.watch.id} className="Poster">
+        <div className={classes.root}>
+          <FormControl className={classes.formControl}>
+            <InputLabel htmlFor="age-native-simple">Priority</InputLabel>
+            <Select
+              native
+              value={this.props.watch.priority}
+              onChange={this.updatePriority}
+            >
+              <option value="" />
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </Select>
+          </FormControl>
+        </div>
+
         <img
           alt={this.props.watch.title}
-          src={`https://image.tmdb.org/t/p/w92/${this.props.watch.poster}`}
+          src={`https://image.tmdb.org/t/p/w154/${this.props.watch.poster}`}
         />
         <br />
         {isCompleted ? (
-          <CheckCircle onClick={this.changeCompletion} fontSize="small" />
+          <CheckCircle onClick={this.updateCompleted} fontSize="small" />
         ) : (
-          <CheckCircleOutline
-            onClick={this.changeCompletion}
-            fontSize="small"
-          />
+          <CheckCircleOutline onClick={this.updateCompleted} fontSize="small" />
         )}
         <Cancel onClick={this.deleteWatch} fontSize="small" />
-
-        {/* SNACKBAR POPUP NOTIFICATION */}
-        <Snackbar
-          anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'center'
-          }}
-          open={this.state.open}
-          autoHideDuration={2000}
-          onClose={this.handleClose}
-          ContentProps={{
-            'aria-describedby': 'message-id'
-          }}
-          message={
-            <span id="message-id">
-              {isCompleted ? 'Marked as complete' : 'Marked as incomplete'}
-            </span>
-          }
-          action={[
-            <Button
-              key="undo"
-              color="secondary"
-              size="small"
-              onClick={this.changeCompletion}
-            >
-              UNDO
-            </Button>,
-            <IconButton
-              key="close"
-              aria-label="Close"
-              color="inherit"
-              className={classes.close}
-              onClick={this.handleClose}
-            >
-              <CloseIcon />
-            </IconButton>
-          ]}
-        />
       </div>
     );
   }
 }
-
-QueueItem.propTypes = {
-  classes: PropTypes.object.isRequired
-};
 
 export default connect()(withStyles(styles)(QueueItem));

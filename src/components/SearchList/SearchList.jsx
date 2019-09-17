@@ -7,7 +7,7 @@ import SearchItem from '../SearchItem/SearchItem';
 
 //MATERIAL-UI IMPORTS
 import IconButton from '@material-ui/core/IconButton';
-import { Theaters } from '@material-ui/icons';
+// import { Theaters } from '@material-ui/icons';
 
 class SearchList extends Component {
   showPlaceholder() {
@@ -16,10 +16,10 @@ class SearchList extends Component {
         <div className="search-placeholder">
           <IconButton style={{ width: '125px', height: '125px' }}>
             {/* <Theaters fontSize="large" /> */}
-            <img src={movieSvg} className="placeholder-icon" />
+            <img src={movieSvg} alt="" className="placeholder-icon" />
           </IconButton>
           <br />
-          <h1>Search Movies & TV Shows</h1>
+          <h2>Search Movies & TV Shows</h2>
         </div>
       );
     }

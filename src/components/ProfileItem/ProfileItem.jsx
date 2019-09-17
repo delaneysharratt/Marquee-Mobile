@@ -42,7 +42,7 @@ class ProfileItem extends Component {
       <div key={this.props.watch.id} className="Poster">
         <img
           alt={this.props.watch.title}
-          src={`https://image.tmdb.org/t/p/w92/${this.props.watch.poster}`}
+          src={`https://image.tmdb.org/t/p/w154/${this.props.watch.poster}`}
         />
         <br />
         <Rating
