@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 //MATERIAL-UI IMPORTS
+import FormControl from '@material-ui/core/FormControl';
+import InputAdornment from '@material-ui/core/InputAdornment';
 import TextField from '@material-ui/core/TextField';
+import SearchIcon from '@material-ui/icons/Search';
 
 class Search extends Component {
   state = {
@@ -38,15 +41,24 @@ class Search extends Component {
   render() {
     return (
       <div className="SearchForm">
-        <TextField
-          onChange={this.setSearchTerm}
-          id="searchWatches"
-          label="Search movies..."
-          value={this.state.searchTerm}
-          type="search"
-          margin="normal"
-          onKeyPress={this.handleEnter}
-        />
+        <FormControl>
+          <TextField
+            onChange={this.setSearchTerm}
+            id="searchWatches"
+            label="Search by Movies/TV title..."
+            value={this.state.searchTerm}
+            type="search"
+            margin="normal"
+            onKeyPress={this.handleEnter}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <SearchIcon />
+                </InputAdornment>
+              )
+            }}
+          />
+        </FormControl>
       </div>
     );
   }

@@ -1,5 +1,5 @@
 .Discover {
-  position: fixed;
+  position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -10,6 +10,40 @@
   background-color: black;
 }
 
-.Discover img {
+.recommendation {
+  position: relative;
+}
+
+.recommendation:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
   width: 100%;
+  height: 100%;
+  display: inline-block;
+  background-image: linear-gradient(to bottom, transparent 50%, black 100%);
+}
+
+.Discover img {
+  display: flex;
+  width: 100%;
+}
+
+.discover-title {
+  position: absolute;
+  z-index: 1;
+  bottom: 0.5em;
+  left: 0.5em;
+  margin: 0;
+  color: whitesmoke;
+  text-shadow: 2px 2px 3px #000000;
+}
+
+.add-button {
+  position: absolute;
+  z-index: 1;
+  bottom: 0.25em;
+  right: 0.25em;
+  color: whitesmoke;
 }

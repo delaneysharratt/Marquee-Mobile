@@ -54,7 +54,8 @@ class SearchItem extends Component {
               {this.props.watch.title
                 ? this.props.watch.title
                 : this.props.watch.name}
-              <br/><span className="poster-missing">(Unavailable)</span>
+              <br />
+              <span className="poster-missing">(Unavailable)</span>
             </p>
           </div>
         )}

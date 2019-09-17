@@ -3,25 +3,26 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './Header.css';
 
+import { ExitToApp } from '@material-ui/icons';
+
 const Header = props => (
   <div className="header">
     <Link to="/discover">
-      <h2 className="header-title">marquee</h2>
+      <h1 className="header-title">marquee</h1>
     </Link>
-    <div className="header-right">
-      <Link className="header-link" to="/discover">
-        {/* Show this link if they are logged in or not,
+    <Link className="header-logout" to="/discover">
+      {/* Show this link if they are logged in or not,
         but call this link 'Logout' if they are logged in,
         and call this link 'Login / Register' if they are not */}
-        {props.user.id ? (
-          <span onClick={() => props.dispatch({ type: 'LOGOUT' })}>
-            Log Out
-          </span>
-        ) : (
-          'Login / Register'
-        )}
-      </Link>
-    </div>
+      {props.user.id ? (
+        <ExitToApp
+          onClick={() => props.dispatch({ type: 'LOGOUT' })}
+          fontSize="large"
+        />
+      ) : (
+        ''
+      )}
+    </Link>
   </div>
 );
 

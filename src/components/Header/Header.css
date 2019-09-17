@@ -9,18 +9,17 @@
 }
 
 .header-title {
-  font-size: 24px;
-  font-weight: 700;
   display: inline-block;
+  margin-top: 8%;
   color: #f2f2f2;
 }
 
-.header-link {
-  float: left;
+.header-logout {
+  position: fixed;
+  margin: 8% 5% 0 0;
+  right: 0;
   color: #f2f2f2;
-  background-color: darkslateblue;
   text-align: center;
-  padding: 24px 10px;
   text-decoration: none;
   font-size: 15px;
 
@@ -29,8 +28,4 @@
   border: none;
   cursor: pointer;
   outline: 0;
-}
-
-.header-right {
-  float: right;
 }
