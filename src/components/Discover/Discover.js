@@ -31,10 +31,9 @@ class Discover extends Component {
   render() {
     let recommendations = this.props.discover.map((watch, i) => {
       return (
-        <div className="recommendation">
+        <div className="recommendation" key={watch.id}>
           <h3 className="discover-title">{watch.title}</h3>
           <img
-            key={watch.id}
             alt={watch.title}
             src={`https://image.tmdb.org/t/p/original/${watch.backdrop}`}
           />

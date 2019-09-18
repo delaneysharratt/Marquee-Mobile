@@ -25,7 +25,6 @@ router.get('/', (req, res) => {
 /** GET (FRIEND SEARCH) ROUTE **/
 router.get('/search/:username', (req, res) => {
   const friend = req.params.username + '%';
-  console.log(friend);
 
   const queryText = `
   SELECT "id", "username" FROM "user" WHERE "username" LIKE $1

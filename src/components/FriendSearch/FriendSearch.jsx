@@ -81,9 +81,7 @@ class FriendSearch extends Component {
 
     return (
       <div className="FriendSearch">
-
         <div className="FriendSearchList">{friendSearchList}</div>
-        
         <div className="FriendSearchForm">
           <FormControl>
             <TextField
@@ -103,7 +101,6 @@ class FriendSearch extends Component {
             />
           </FormControl>
         </div>
-        
       </div>
     );
   }

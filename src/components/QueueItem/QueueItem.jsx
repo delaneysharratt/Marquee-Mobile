@@ -172,11 +172,21 @@ class QueueItem extends Component {
 
     return (
       <div key={this.props.watch.id} className="Poster">
-        <img
-          alt={this.props.watch.title}
-          src={`https://image.tmdb.org/t/p/original/${this.props.watch.poster}`}
-        />
+        {isCompleted ? (
+          <div className="completed-watch"><img
+            alt={this.props.watch.title}
+            src={`https://image.tmdb.org/t/p/original/${this.props.watch.poster}`}
+            className="completed-watch"
+          /></div>
+        ) : (
+          <img
+            alt={this.props.watch.title}
+            src={`https://image.tmdb.org/t/p/original/${this.props.watch.poster}`}
+          />
+        )}
+
         <br />
+        
         {this.setPriority()}
 
         {isCompleted ? (
