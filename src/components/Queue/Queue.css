@@ -6,12 +6,8 @@
   text-align: center;
 }
 
-h2 {
-  margin-bottom: 0;
-}
-
 .QueueList {
-  display: inline-flex;
+  display: flex;
   flex-wrap: wrap;
-  align-content: space-around;
+  margin: 3%;
 }

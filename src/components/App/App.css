@@ -10,7 +10,8 @@ body {
 .Poster {
   flex-grow: 1;
   width: 33%;
-  max-width: 33.5%;
+  max-width: 33.33%;
+  margin-bottom: 1%;
 }
 
 .Poster img {

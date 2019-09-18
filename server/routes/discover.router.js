@@ -4,8 +4,6 @@ const router = express.Router();
 
 /** GET (DISCOVER) ROUTE **/
 router.get('/', (req, res) => {
-  console.log('in discover router');
-
   const user = req.user.id;
   const queryText = `SELECT * FROM "watch" WHERE "rating" = 5 ORDER BY RANDOM() LIMIT 3`;
 

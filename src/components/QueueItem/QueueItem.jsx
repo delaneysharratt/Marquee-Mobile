@@ -4,9 +4,7 @@ import { connect } from 'react-redux';
 //MATERIAL-UI IMPORTS
 import { withStyles } from '@material-ui/core/styles';
 import { CheckCircleOutline, CheckCircle, Cancel } from '@material-ui/icons';
-import FormControl from '@material-ui/core/FormControl';
-import InputLabel from '@material-ui/core/InputLabel';
-import Select from '@material-ui/core/Select';
+import { LooksOne as One, LooksTwo as Two, Looks3 as Three } from '@material-ui/icons';
 
 const styles = theme => ({
   root: {
@@ -34,10 +32,10 @@ class QueueItem extends Component {
   }
 
   //updates priority status to selected
-  updatePriority = event => {
+  updatePriority = level => {
     let update = {
       id: this.props.watch.id,
-      priority: event.target.value
+      priority: level
     };
 
     console.log(update);
@@ -67,33 +65,39 @@ class QueueItem extends Component {
     this.getQueue();
   };
 
+  setPriority() {
+    const priority = this.props.watch.priority;
+    if (priority === null) {
+      return (<span><One value="high" onClick={() => this.updatePriority('high')} fontSize="small" />
+        <Two value="medium" onClick={() => this.updatePriority('medium')} fontSize="small" />
+        <Three value="low" onClick={() => this.updatePriority('low')} fontSize="small" /></span>)
+    } else if (priority === 'high'){
+      return (<span><One value="high" color="primary" onClick={() => this.updatePriority('high')} fontSize="small" />
+        <Two value="medium" onClick={() => this.updatePriority('medium')} fontSize="small" />
+        <Three value="low" onClick={() => this.updatePriority('low')} fontSize="small" /></span>)
+    } else if (priority === 'medium'){
+      return (<span><One value="high" onClick={() => this.updatePriority('high')} fontSize="small" />
+        <Two value="medium" color="primary" onClick={() => this.updatePriority('medium')} fontSize="small" />
+        <Three value="low" onClick={() => this.updatePriority('low')} fontSize="small" /></span>)
+    } else if (priority === 'low'){
+      return (<span><One value="high" onClick={() => this.updatePriority('high')} fontSize="small" />
+        <Two value="medium"  onClick={() => this.updatePriority('medium')} fontSize="small" />
+        <Three value="low" color="primary" onClick={() => this.updatePriority('low')} fontSize="small" /></span>)
+    }
+  }
+
   render() {
-    const { classes } = this.props;
     const isCompleted = this.props.watch.completed;
 
     return (
       <div key={this.props.watch.id} className="Poster">
-        <div className={classes.root}>
-          <FormControl className={classes.formControl}>
-            <InputLabel htmlFor="age-native-simple">Priority</InputLabel>
-            <Select
-              native
-              value={this.props.watch.priority}
-              onChange={this.updatePriority}
-            >
-              <option value="" />
-              <option value="low">Low</option>
-              <option value="medium">Medium</option>
-              <option value="high">High</option>
-            </Select>
-          </FormControl>
-        </div>
-
         <img
           alt={this.props.watch.title}
           src={`https://image.tmdb.org/t/p/w154/${this.props.watch.poster}`}
         />
-        <br />
+        <br/>
+        {this.setPriority()}
+
         {isCompleted ? (
           <CheckCircle onClick={this.updateCompleted} fontSize="small" />
         ) : (

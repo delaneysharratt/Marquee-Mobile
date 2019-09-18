@@ -7,7 +7,7 @@
 }
 
 .ProfileList {
-  display: inline-flex;
+  display: flex;
   flex-wrap: wrap;
-  align-content: space-around;
+  margin-bottom: 5%;
 }

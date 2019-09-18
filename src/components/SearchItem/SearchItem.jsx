@@ -46,7 +46,7 @@ class SearchItem extends Component {
         {this.props.watch.poster_path ? (
           <img
             alt={this.props.watch.title}
-            src={`https://image.tmdb.org/t/p/w92/${this.props.watch.poster_path}`}
+            src={`https://image.tmdb.org/t/p/w154/${this.props.watch.poster_path}`}
           />
         ) : (
           <div className="posterPlaceholder">
