@@ -4,7 +4,11 @@ import { connect } from 'react-redux';
 //MATERIAL-UI IMPORTS
 import { withStyles } from '@material-ui/core/styles';
 import { CheckCircleOutline, CheckCircle, Cancel } from '@material-ui/icons';
-import { LooksOne as One, LooksTwo as Two, Looks3 as Three } from '@material-ui/icons';
+import {
+  LooksOne as First,
+  LooksTwo as Second,
+  Looks3 as Third
+} from '@material-ui/icons';
 
 const styles = theme => ({
   root: {
@@ -66,23 +70,100 @@ class QueueItem extends Component {
   };
 
   setPriority() {
+    const completed = this.props.watch.completed;
     const priority = this.props.watch.priority;
-    if (priority === null) {
-      return (<span><One value="high" onClick={() => this.updatePriority('high')} fontSize="small" />
-        <Two value="medium" onClick={() => this.updatePriority('medium')} fontSize="small" />
-        <Three value="low" onClick={() => this.updatePriority('low')} fontSize="small" /></span>)
-    } else if (priority === 'high'){
-      return (<span><One value="high" color="primary" onClick={() => this.updatePriority('high')} fontSize="small" />
-        <Two value="medium" onClick={() => this.updatePriority('medium')} fontSize="small" />
-        <Three value="low" onClick={() => this.updatePriority('low')} fontSize="small" /></span>)
-    } else if (priority === 'medium'){
-      return (<span><One value="high" onClick={() => this.updatePriority('high')} fontSize="small" />
-        <Two value="medium" color="primary" onClick={() => this.updatePriority('medium')} fontSize="small" />
-        <Three value="low" onClick={() => this.updatePriority('low')} fontSize="small" /></span>)
-    } else if (priority === 'low'){
-      return (<span><One value="high" onClick={() => this.updatePriority('high')} fontSize="small" />
-        <Two value="medium"  onClick={() => this.updatePriority('medium')} fontSize="small" />
-        <Three value="low" color="primary" onClick={() => this.updatePriority('low')} fontSize="small" /></span>)
+
+    if (completed === true) {
+      return (
+        <span>
+          <First color="disabled" fontSize="small" />
+          <Second color="disabled" fontSize="small" />
+          <Third color="disabled" fontSize="small" />
+        </span>
+      );
+    } else if (priority === null) {
+      return (
+        <span>
+          <First
+            value="high"
+            onClick={() => this.updatePriority('high')}
+            fontSize="small"
+          />
+          <Second
+            value="medium"
+            onClick={() => this.updatePriority('medium')}
+            fontSize="small"
+          />
+          <Third
+            value="low"
+            onClick={() => this.updatePriority('low')}
+            fontSize="small"
+          />
+        </span>
+      );
+    } else if (priority === 'high') {
+      return (
+        <span>
+          <First
+            value="high"
+            color="primary"
+            onClick={() => this.updatePriority('high')}
+            fontSize="small"
+          />
+          <Second
+            value="medium"
+            onClick={() => this.updatePriority('medium')}
+            fontSize="small"
+          />
+          <Third
+            value="low"
+            onClick={() => this.updatePriority('low')}
+            fontSize="small"
+          />
+        </span>
+      );
+    } else if (priority === 'medium') {
+      return (
+        <span>
+          <First
+            value="high"
+            onClick={() => this.updatePriority('high')}
+            fontSize="small"
+          />
+          <Second
+            value="medium"
+            color="primary"
+            onClick={() => this.updatePriority('medium')}
+            fontSize="small"
+          />
+          <Third
+            value="low"
+            onClick={() => this.updatePriority('low')}
+            fontSize="small"
+          />
+        </span>
+      );
+    } else if (priority === 'low') {
+      return (
+        <span>
+          <First
+            value="high"
+            onClick={() => this.updatePriority('high')}
+            fontSize="small"
+          />
+          <Second
+            value="medium"
+            onClick={() => this.updatePriority('medium')}
+            fontSize="small"
+          />
+          <Third
+            value="low"
+            color="primary"
+            onClick={() => this.updatePriority('low')}
+            fontSize="small"
+          />
+        </span>
+      );
     }
   }
 
@@ -93,9 +174,9 @@ class QueueItem extends Component {
       <div key={this.props.watch.id} className="Poster">
         <img
           alt={this.props.watch.title}
-          src={`https://image.tmdb.org/t/p/w154/${this.props.watch.poster}`}
+          src={`https://image.tmdb.org/t/p/original/${this.props.watch.poster}`}
         />
-        <br/>
+        <br />
         {this.setPriority()}
 
         {isCompleted ? (

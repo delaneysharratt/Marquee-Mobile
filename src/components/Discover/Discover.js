@@ -36,7 +36,7 @@ class Discover extends Component {
           <img
             key={watch.id}
             alt={watch.title}
-            src={`https://image.tmdb.org/t/p/w500/${watch.backdrop}`}
+            src={`https://image.tmdb.org/t/p/original/${watch.backdrop}`}
           />
           <AddCircle
             onClick={event => this.addWatch(event, watch)}

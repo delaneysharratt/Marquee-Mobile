@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 //MATERIAL-UI IMPORTS
 import { Rating } from '@material-ui/lab';
-import { Cancel } from '@material-ui/icons';
+// import { Cancel } from '@material-ui/icons';
 
 class ProfileItem extends Component {
   //re-fetches Profile after
@@ -42,7 +42,7 @@ class ProfileItem extends Component {
       <div key={this.props.watch.id} className="Poster">
         <img
           alt={this.props.watch.title}
-          src={`https://image.tmdb.org/t/p/w154/${this.props.watch.poster}`}
+          src={`https://image.tmdb.org/t/p/original/${this.props.watch.poster}`}
         />
         <br />
         <Rating
@@ -51,8 +51,8 @@ class ProfileItem extends Component {
           onClick={this.updateRating}
           size="small"
         />
-        <br />
-        <Cancel onClick={this.deleteWatch} fontSize="small" />
+        {/* <br />
+        <Cancel onClick={this.deleteWatch} fontSize="small" /> */}
       </div>
     );
   }

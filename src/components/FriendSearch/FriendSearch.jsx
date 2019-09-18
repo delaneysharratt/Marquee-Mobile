@@ -81,12 +81,15 @@ class FriendSearch extends Component {
 
     return (
       <div className="FriendSearch">
+
+        <div className="FriendSearchList">{friendSearchList}</div>
+        
         <div className="FriendSearchForm">
           <FormControl>
             <TextField
               onChange={this.setSearchName}
               id="friend-search"
-              label="Search for friends..."
+              label="Search username..."
               value={this.state.searchName}
               type="search"
               margin="normal"
@@ -100,7 +103,7 @@ class FriendSearch extends Component {
             />
           </FormControl>
         </div>
-        <div className="FriendSearchList">{friendSearchList}</div>
+        
       </div>
     );
   }

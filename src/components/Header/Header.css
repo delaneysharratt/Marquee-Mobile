@@ -9,23 +9,19 @@
 }
 
 .header-title {
-  display: inline-block;
-  margin-top: 8%;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   color: #f2f2f2;
 }
 
 .header-logout {
-  position: fixed;
-  margin: 8% 5% 0 0;
-  right: 0;
+  position: absolute;
+  top: 25%;
+  right: 5%;
   color: #f2f2f2;
   text-align: center;
   text-decoration: none;
   font-size: 15px;
-
-  /* these last two make the logout button in
-  the nav bar look like another link */
-  border: none;
-  cursor: pointer;
-  outline: 0;
 }

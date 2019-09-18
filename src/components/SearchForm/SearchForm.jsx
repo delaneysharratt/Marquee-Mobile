@@ -18,10 +18,12 @@ class Search extends Component {
         type: 'FETCH_SEARCH',
         payload: this.state.searchTerm
       });
+      this.setState({
+        searchTerm: ''
+      });
     } else {
       this.props.dispatch({
-        type: 'CLEAR_SEARCH',
-        payload: this.state.searchTerm
+        type: 'CLEAR_SEARCH'
       });
     }
   };
