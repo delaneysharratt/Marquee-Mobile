@@ -18,10 +18,7 @@
 
 .header-logout {
   position: absolute;
-  top: 25%;
+  top: 33%;
   right: 5%;
   color: #f2f2f2;
-  text-align: center;
-  text-decoration: none;
-  font-size: 15px;
 }

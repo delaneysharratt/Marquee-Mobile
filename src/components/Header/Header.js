@@ -1,9 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { ReactComponent as LogoutSvg } from './logout.svg';
 import './Header.css';
-
-import { ExitToApp } from '@material-ui/icons';
 
 const Header = props => (
   <div className="header">
@@ -14,13 +13,14 @@ const Header = props => (
       {/* Show this link if they are logged in or not,
         but call this link 'Logout' if they are logged in,
         and call this link 'Login / Register' if they are not */}
-      {props.user.id ? (
-        <ExitToApp
+      {props.user.id && (
+        // Icons made by Freepik from www.flaticon.com
+        // ( https://www.flaticon.com/authors/freepik )
+        <LogoutSvg
           onClick={() => props.dispatch({ type: 'LOGOUT' })}
-          fontSize="large"
+          style={{ width: '30px', height: '30px', fill: '#fff' }}
+          className="header-logout"
         />
-      ) : (
-        ''
       )}
     </Link>
   </div>
