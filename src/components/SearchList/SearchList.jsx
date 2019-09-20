@@ -1,23 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import movieSvg from './movie.svg';
+import { ReactComponent as MovieSvg } from './movie.svg';
 
 //COMPONENT IMPORTS
 import SearchItem from '../SearchItem/SearchItem';
-
-//MATERIAL-UI IMPORTS
-import IconButton from '@material-ui/core/IconButton';
-// import { Theaters } from '@material-ui/icons';
 
 class SearchList extends Component {
   showPlaceholder() {
     if (this.props.search.length < 1) {
       return (
         <div className="search-placeholder">
-          <IconButton style={{ width: '125px', height: '125px' }}>
-            {/* <Theaters fontSize="large" /> */}
-            <img src={movieSvg} alt="" className="placeholder-icon" />
-          </IconButton>
+          <MovieSvg
+            style={{ width: '150px', height: '150px' }}
+            className="placeholder-icon"
+          />
           <br />
           <h2>Search Movies & TV Shows</h2>
         </div>

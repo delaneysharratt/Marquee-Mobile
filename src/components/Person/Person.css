@@ -1,9 +1,9 @@
 .Friend {
-  position: absolute;
+  position: fixed;
   overflow: scroll;
+  width: 100%;
   height: 80%;
   top: 10%;
-  z-index: -1;
   text-align: center;
 }
 
@@ -12,7 +12,7 @@
 }
 
 .FriendWatchList {
-  display: inline-flex;
+  display: flex;
   flex-wrap: wrap;
-  align-content: space-around;
+  margin: 3%;
 }

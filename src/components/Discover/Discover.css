@@ -1,5 +1,5 @@
 .Discover {
-  position: absolute;
+  position: fixed;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -28,6 +28,23 @@
 .Discover img {
   display: flex;
   width: 100%;
+}
+
+.friend-icon {
+  position: relative;
+  color: whitesmoke;
+}
+
+.friend-username {
+  color: whitesmoke;
+}
+
+.discover-rating {
+  position: absolute;
+  top: 0.25em;
+  left: 0.25em;
+  text-align: left;
+  filter: drop-shadow(1px 1px 2px black);
 }
 
 .discover-title {
