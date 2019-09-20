@@ -11,6 +11,9 @@ import PersonItem from '../PersonItem/PersonItem';
 //MATERIAL-UI IMPORTS
 import { PersonAdd } from '@material-ui/icons';
 
+//DIALOG BOX ON ADD FRIEND
+import Swal from 'sweetalert2';
+
 class Friend extends Component {
   state = {
     username: this.props.match.params.username
@@ -33,6 +36,12 @@ class Friend extends Component {
     this.props.dispatch({
       type: 'ADD_FRIEND',
       payload: this.props.selected
+    });
+    Swal.fire({
+      type: 'success',
+      title: 'Friend added!',
+      showConfirmButton: false,
+      timer: 1000
     });
   };
 

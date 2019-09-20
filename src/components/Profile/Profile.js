@@ -5,23 +5,37 @@ import { connect } from 'react-redux';
 import './Profile.css';
 
 //COMPONENT IMPORTS
-import ProfileList from '../ProfileList/ProfileList';
+import ProfileItem from '../ProfileItem/ProfileItem';
 
 class Profile extends Component {
+  //Load User Profile on page load
+  componentDidMount() {
+    this.props.dispatch({
+      type: 'FETCH_PROFILE'
+    });
+  }
+
   render() {
+    //for each item in redux state.watch
+    //render a ProfileItem for that watch
+    let profileList = this.props.watches.map((watch, i) => {
+      return <ProfileItem key={i} watch={watch} />;
+    });
+
     return (
       <div className="Profile">
         <div>
-          <h1 id="welcome">Welcome, {this.props.user.username}!</h1>
+          <h1 id="welcome">{this.props.user.username}</h1>
         </div>
-        <ProfileList />
+        <div className="ProfileList">{profileList}</div>
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  user: state.user
+  user: state.user,
+  watches: state.profile
 });
 
 export default connect(mapStateToProps)(Profile);

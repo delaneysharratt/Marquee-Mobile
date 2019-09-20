@@ -9,9 +9,10 @@
 }
 
 .nav-display {
-  position: absolute;
-  width: 100%;
-  bottom: 50%;
+  position: relative;
+  bottom: -25%;
+  width: 90%;
+  margin: auto;
   display: flex;
   justify-content: space-around;
 }

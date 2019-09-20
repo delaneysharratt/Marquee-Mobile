@@ -5,9 +5,9 @@ const router = express.Router();
 /** GET (QUEUE) ROUTE **/
 router.get('/queue', (req, res) => {
   const user = req.user.id;
-  const queryText = `SELECT * FROM "watch" WHERE "user_id" = $1 
-                     ORDER BY "completed" ASC, "date_updated" DESC`;
-
+  const queryText = `SELECT * FROM "watch" WHERE "user_id" = $1 ORDER BY "completed" ASC, 
+                    (CASE WHEN "priority" IS NULL THEN 0 ELSE 1 END),
+                    "priority" ASC, "date_updated" DESC`;
   pool
     .query(queryText, [user])
     .then(result => {
@@ -24,7 +24,7 @@ router.get('/queue', (req, res) => {
 router.get('/profile', (req, res) => {
   const user = req.user.id;
   const queryText = `SELECT * FROM "watch" WHERE "user_id" = $1 AND "completed" = true 
-                    ORDER BY CASE WHEN "rating" = 0 THEN 0 ELSE 1 END, "rating" DESC`;
+                    ORDER BY CASE WHEN "rating" = 0 THEN 0 ELSE 1 END, "rating" DESC, "date_updated" DESC`;
   pool
     .query(queryText, [user])
     .then(result => {
@@ -99,8 +99,8 @@ router.put('/completed/:id', (req, res) => {
   console.log('Updating watch status...');
   const idToUpdate = req.params.id;
 
-  const queryText = `UPDATE "watch" SET "completed" = NOT "completed", 
-                    "date_updated" = DATE_TRUNC('minute', NOW()) WHERE "id" = $1`;
+  const queryText = `UPDATE "watch" SET "completed" = NOT "completed", "priority" = NULL, 
+                    "rating" = 0, "date_updated" = DATE_TRUNC('minute', NOW()) WHERE "id" = $1`;
   pool
     .query(queryText, [idToUpdate])
     .then(() => {

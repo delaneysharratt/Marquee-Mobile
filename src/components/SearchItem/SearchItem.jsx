@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 //MATERIAL-UI IMPORTS
 import { AddCircle } from '@material-ui/icons';
 
+//DIALOG BOX ON ADD SHOW
+import Swal from 'sweetalert2';
+
 class SearchItem extends Component {
   state = {
     watch: {
@@ -30,15 +33,28 @@ class SearchItem extends Component {
 
   addWatch = event => {
     console.log('Adding to Queue...');
+    //dialog box confirmation: success!
+    this.addAlert();
+    //send dispatch for POST
     this.props.dispatch({
       type: 'ADD_WATCH',
       payload: this.state.watch
     });
+    //clear search reducer to reset page
     this.props.dispatch({
       type: 'CLEAR_SEARCH',
       payload: this.state.searchTerm
     });
   };
+
+  addAlert() {
+    Swal.fire({
+      type: 'success',
+      title: 'Successfully added!',
+      showConfirmButton: false,
+      timer: 1000
+    });
+  }
 
   render() {
     return (

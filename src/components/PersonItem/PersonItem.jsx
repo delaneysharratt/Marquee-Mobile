@@ -5,6 +5,9 @@ import { connect } from 'react-redux';
 import { Rating } from '@material-ui/lab';
 import { AddCircle } from '@material-ui/icons';
 
+//DIALOG BOX ON ADD WATCH
+import Swal from 'sweetalert2';
+
 class FriendItem extends Component {
   state = {
     watch: {
@@ -16,18 +19,30 @@ class FriendItem extends Component {
 
   addWatch = event => {
     console.log('Adding to Queue...');
+    //dialog box confirmation: success!
+    this.addAlert();
+    //send dispatch for POST
     this.props.dispatch({
       type: 'ADD_WATCH',
       payload: this.state.watch
     });
   };
 
+  addAlert() {
+    Swal.fire({
+      type: 'success',
+      title: 'Successfully added!',
+      showConfirmButton: false,
+      timer: 1000
+    });
+  }
+
   render() {
     return (
       <div key={this.props.watch.id} className="Poster">
         <img
           alt={this.props.watch.title}
-          src={`https://image.tmdb.org/t/p/w92/${this.props.watch.poster}`}
+          src={`https://image.tmdb.org/t/p/original/${this.props.watch.poster}`}
         />
         <br />
         <Rating
