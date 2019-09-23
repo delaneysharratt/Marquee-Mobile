@@ -1,4 +1,4 @@
-.Friend {
+.Person {
   position: fixed;
   overflow: scroll;
   width: 100%;
@@ -7,11 +7,18 @@
   text-align: center;
 }
 
-.FriendHeader {
-  margin: 10%;
+.person-header {
+  display: flex;
+  justify-content: space-around;
+  margin: 5% 0;
 }
 
-.FriendWatchList {
+.person-username {
+  margin: auto 0;
+  padding: 0 5px;
+}
+
+.person-watch-list {
   display: flex;
   flex-wrap: wrap;
   margin: 3%;

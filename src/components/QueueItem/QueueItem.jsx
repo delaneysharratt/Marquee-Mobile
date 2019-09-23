@@ -140,95 +140,98 @@ class QueueItem extends Component {
     const completed = this.props.watch.completed;
     const priority = this.props.watch.priority;
 
-    if (completed === true) {
+    if (completed === false) {
+      switch (priority) {
+        case '1':
+          return (
+            <span>
+              <First
+                value="1"
+                color="primary"
+                onClick={() => this.updatePriority('1')}
+                fontSize="small"
+              />
+              <Second
+                value="2"
+                onClick={() => this.updatePriority('2')}
+                fontSize="small"
+              />
+              <Third
+                value="3"
+                onClick={() => this.updatePriority('3')}
+                fontSize="small"
+              />
+            </span>
+          );
+        case '2':
+          return (
+            <span>
+              <First
+                value="1"
+                onClick={() => this.updatePriority('1')}
+                fontSize="small"
+              />
+              <Second
+                value="2"
+                color="primary"
+                onClick={() => this.updatePriority('2')}
+                fontSize="small"
+              />
+              <Third
+                value="3"
+                onClick={() => this.updatePriority('3')}
+                fontSize="small"
+              />
+            </span>
+          );
+        case '3':
+          return (
+            <span>
+              <First
+                value="1"
+                onClick={() => this.updatePriority('1')}
+                fontSize="small"
+              />
+              <Second
+                value="2"
+                onClick={() => this.updatePriority('2')}
+                fontSize="small"
+              />
+              <Third
+                value="3"
+                color="primary"
+                onClick={() => this.updatePriority('3')}
+                fontSize="small"
+              />
+            </span>
+          );
+        default:
+          return (
+            <span>
+              <First
+                value="1"
+                onClick={() => this.updatePriority('1')}
+                fontSize="small"
+              />
+              <Second
+                value="2"
+                onClick={() => this.updatePriority('2')}
+                fontSize="small"
+              />
+              <Third
+                value="3"
+                onClick={() => this.updatePriority('3')}
+                fontSize="small"
+              />
+            </span>
+          );
+      }
+    } else if (completed === true) {
       return (
         <span>
           <First color="disabled" fontSize="small" />
           <Second color="disabled" fontSize="small" />
           <Third color="disabled" fontSize="small" />
-        </span>
-      );
-    } else if (priority === null) {
-      return (
-        <span>
-          <First
-            value="1"
-            onClick={() => this.updatePriority('1')}
-            fontSize="small"
-          />
-          <Second
-            value="2"
-            onClick={() => this.updatePriority('2')}
-            fontSize="small"
-          />
-          <Third
-            value="3"
-            onClick={() => this.updatePriority('3')}
-            fontSize="small"
-          />
-        </span>
-      );
-    } else if (priority === '1') {
-      return (
-        <span>
-          <First
-            value="1"
-            color="primary"
-            onClick={() => this.updatePriority('1')}
-            fontSize="small"
-          />
-          <Second
-            value="2"
-            onClick={() => this.updatePriority('2')}
-            fontSize="small"
-          />
-          <Third
-            value="3"
-            onClick={() => this.updatePriority('3')}
-            fontSize="small"
-          />
-        </span>
-      );
-    } else if (priority === '2') {
-      return (
-        <span>
-          <First
-            value="1"
-            onClick={() => this.updatePriority('1')}
-            fontSize="small"
-          />
-          <Second
-            value="2"
-            color="primary"
-            onClick={() => this.updatePriority('2')}
-            fontSize="small"
-          />
-          <Third
-            value="3"
-            onClick={() => this.updatePriority('3')}
-            fontSize="small"
-          />
-        </span>
-      );
-    } else if (priority === '3') {
-      return (
-        <span>
-          <First
-            value="1"
-            onClick={() => this.updatePriority('1')}
-            fontSize="small"
-          />
-          <Second
-            value="2"
-            onClick={() => this.updatePriority('2')}
-            fontSize="small"
-          />
-          <Third
-            value="3"
-            color="primary"
-            onClick={() => this.updatePriority('3')}
-            fontSize="small"
-          />
         </span>
       );
     }

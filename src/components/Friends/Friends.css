@@ -5,40 +5,40 @@
   top: 10%;
 }
 
-.FriendList {
+.friend-list {
   display: flex;
   flex-wrap: wrap;
   overflow-y: scroll;
   width: 80%;
   height: 60%;
   margin: 5% 10%;
-  box-sizing: border-box;
-  border-bottom: 1px solid slategray;
 }
 
-.FriendItem {
-  width: 50%;
-  padding: 0.5em 0;
+.friend-item {
+  padding: 5px 0;
 }
 
-.FriendSearch {
-  width: 80%;
-  height: 30%;
-  margin: 7.5% 10% 5%;
+.friend-item svg {
+  padding: 5px;
 }
 
-.FriendSearchForm {
-  position: absolute;
-  width: 80%;
-  height: 20%;
-  bottom: 0;
-  text-align: center;
+.friend-name {
+  margin: auto 0;
+  padding: 5px;
 }
 
-.FriendSearchList {
+.friend-account {
+  display: inline-flex;
+  flex-basis: 75%;
+}
+
+.friend-delete {
   display: flex;
-  flex-wrap: wrap;
-  overflow: scroll;
-  width: 100%;
-  height: 50%;
+  flex-basis: 25%;
+  justify-content: flex-end;
+}
+
+.divider {
+  flex-basis: 100%;
+  height: 0;
 }

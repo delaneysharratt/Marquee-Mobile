@@ -67,14 +67,13 @@ router.get('/:username', (req, res) => {
     });
 });
 
-/** POST ROUTE **/
+/** POST (ADD FRIEND) ROUTE **/
 router.post('/', (req, res) => {
   console.log('Adding friend:', req.body);
   const user = req.user.id;
   const friend = req.body.id;
 
-  const queryText = `INSERT INTO "friend" ("user_id", "friend_id")
-                    VALUES ($1, $2)`;
+  const queryText = `INSERT INTO "friend" ("user_id", "friend_id") VALUES ($1, $2)`;
   pool
     .query(queryText, [user, friend])
     .then(() => {
@@ -82,6 +81,24 @@ router.post('/', (req, res) => {
     })
     .catch(err => {
       console.log('Error in watch router POST:', err);
+      res.sendStatus(500);
+    });
+});
+
+/** DELETE (REMOVE FRIEND) ROUTE **/
+router.delete('/:id', (req, res) => {
+  console.log('Deleting friend...');
+  const user = req.user.id;
+  const friendToDelete = req.params.id;
+
+  const queryText = `DELETE FROM "friend" WHERE "user_id" = $1 AND "friend_id" = $2`;
+  pool
+    .query(queryText, [user, friendToDelete])
+    .then(() => {
+      res.sendStatus(201);
+    })
+    .catch(err => {
+      console.log('Error in friend router DELETE:', err);
       res.sendStatus(500);
     });
 });

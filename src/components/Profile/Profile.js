@@ -24,10 +24,10 @@ class Profile extends Component {
 
     return (
       <div className="Profile">
-        <div>
-          <h1 id="welcome">{this.props.user.username}</h1>
+        <div className="profile-header">
+          <h1 className="profile-username">{this.props.user.username}</h1>
         </div>
-        <div className="ProfileList">{profileList}</div>
+        <div className="profile-list">{profileList}</div>
       </div>
     );
   }

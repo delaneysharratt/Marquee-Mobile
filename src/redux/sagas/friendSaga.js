@@ -34,8 +34,8 @@ function* fetchFriend(action) {
 function* addFriend(action) {
   try {
     let friend = action.payload;
-    console.log(friend);
-    
+    console.log('Adding', friend);
+
     yield axios.post('/api/friend', friend);
     yield put({
       type: 'FETCH_FRIEND_LIST'
@@ -45,10 +45,25 @@ function* addFriend(action) {
   }
 }
 
+//worker Saga: will be fired on "DELETE_FRIEND" actions
+function* deleteFriend(action) {
+  try {
+    let friendId = action.payload;
+
+    yield axios.delete(`/api/friend/${friendId}`);
+    yield put({
+      type: 'FETCH_FRIEND_LIST'
+    });
+  } catch (err) {
+    console.log('Error in friendSaga DELETE:', err);
+  }
+}
+
 function* friendSaga() {
   yield takeLatest('FETCH_FRIEND_LIST', fetchFriendList);
   yield takeLatest('FETCH_FRIEND', fetchFriend);
   yield takeLatest('ADD_FRIEND', addFriend);
+  yield takeLatest('DELETE_FRIEND', deleteFriend);
 }
 
 export default friendSaga;

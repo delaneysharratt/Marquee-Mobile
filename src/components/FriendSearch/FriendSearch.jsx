@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
+import './FriendSearch.css';
+
 //MATERIAL-UI IMPORTS
 import FormControl from '@material-ui/core/FormControl';
 import InputAdornment from '@material-ui/core/InputAdornment';
@@ -69,20 +71,22 @@ class FriendSearch extends Component {
       return (
         <div
           key={i}
-          className="FriendItem"
+          className="friend-item"
           onClick={() => this.seeFriend(friend)}
         >
-          <AccountCircle fontSize="large" />
-          {friend.username}
-          <Divider />
+          <AccountCircle />
+          <span className="friend-name">{friend.username}</span>
+          <div className="divider">
+            <Divider />
+          </div><Divider />
         </div>
       );
     });
 
     return (
       <div className="FriendSearch">
-        <div className="FriendSearchList">{friendSearchList}</div>
-        <div className="FriendSearchForm">
+        <div className="friend-search-list">{friendSearchList}</div>
+        <div className="friend-search-form">
           <FormControl>
             <TextField
               onChange={this.setSearchName}

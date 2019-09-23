@@ -1,0 +1,29 @@
+.FriendSearch {
+  width: 80%;
+  height: 20%;
+  margin: 5% 10%;
+}
+
+.friend-search-form {
+  position: absolute;
+  width: 80%;
+  height: 20%;
+  bottom: 0;
+  text-align: center;
+}
+
+.friend-search-list {
+  display: flex;
+  flex-wrap: wrap;
+  overflow: scroll;
+  width: 100%;
+  height: 50%;
+}
+
+.friend-item {
+  display: flex;
+  vertical-align: middle;
+  flex-wrap: wrap;
+  width: 100%;
+  padding-bottom: 5px;
+}
