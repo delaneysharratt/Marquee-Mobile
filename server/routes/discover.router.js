@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
                     JOIN "user" on "user".id = "watch".user_id 
                     WHERE "user_id" = ANY (SELECT "friend_id" 
                     FROM "friend" WHERE "user_id" = $1) AND 
-                    "rating" >= 3 ORDER BY RANDOM(), "rating" LIMIT 3`;
+                    "rating" >= 4 ORDER BY RANDOM(), "rating" LIMIT 3`;
 
   pool
     .query(queryText, [user])
