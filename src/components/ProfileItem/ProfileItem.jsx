@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 //MATERIAL-UI IMPORTS
 import { Rating } from '@material-ui/lab';
-import { Cancel } from '@material-ui/icons';
+import { Cancel as Delete } from '@material-ui/icons';
 
 //DIALOG BOX ON DELETE
 import Swal from 'sweetalert2';
@@ -87,7 +87,7 @@ class ProfileItem extends Component {
           size="small"
         />
         <br />
-        <Cancel onClick={this.deleteAlert} fontSize="small" />
+        <Delete onClick={this.deleteAlert} fontSize="small" />
       </div>
     );
   }

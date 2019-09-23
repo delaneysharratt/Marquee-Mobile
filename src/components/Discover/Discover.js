@@ -65,7 +65,7 @@ class Discover extends Component {
           >
             <AccountCircle fontSize="small" className="friend-icon" />
             <span className="friend-username">{watch.username}</span>
-            <br />
+            <div className="break"></div>
             <Rating
               name={watch.title}
               value={watch.rating}

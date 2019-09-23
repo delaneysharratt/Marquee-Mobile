@@ -43,11 +43,10 @@ router.post('/', (req, res) => {
   const title = req.body.title;
   const poster = req.body.poster;
   const backdrop = req.body.backdrop;
-  const time = `DATE_TRUNC('minute', NOW())`;
   const user = req.user.id;
 
   const queryText = `INSERT INTO "watch" ("title", "poster", "backdrop", "date_updated", "user_id")
-                    VALUES ($1, $2, $3, DATE_TRUNC('minute', NOW()), $4)`;
+                    VALUES ($1, $2, $3, DATE_TRUNC('second', NOW()), $4)`;
   pool
     .query(queryText, [title, poster, backdrop, user])
     .then(() => {
@@ -100,7 +99,7 @@ router.put('/completed/:id', (req, res) => {
   const idToUpdate = req.params.id;
 
   const queryText = `UPDATE "watch" SET "completed" = NOT "completed", "priority" = NULL, 
-                    "rating" = 0, "date_updated" = DATE_TRUNC('minute', NOW()) WHERE "id" = $1`;
+                    "rating" = 0, "date_updated" = DATE_TRUNC('second', NOW()) WHERE "id" = $1`;
   pool
     .query(queryText, [idToUpdate])
     .then(() => {

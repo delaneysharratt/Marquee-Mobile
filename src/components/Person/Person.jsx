@@ -53,14 +53,12 @@ class Friend extends Component {
     });
 
     return (
-      <div className="Friend">
-        <div className="FriendHeader">
-          <h1>
-            {this.state.username}
-            <PersonAdd onClick={this.addFriend} fontSize="large" />
-          </h1>
+      <div className="Person">
+        <div className="person-header">
+          <h1 className="person-username">{this.state.username}</h1>
+          <PersonAdd onClick={this.addFriend} fontSize="large" />
         </div>
-        <div className="FriendWatchList">{personWatchList}</div>
+        <div className="person-watch-list">{personWatchList}</div>
       </div>
     );
   }

@@ -7,7 +7,19 @@
   text-align: center;
 }
 
-.ProfileList {
+.profile-header {
+  display: flex;
+  justify-content: space-around;
+  margin: 5% 0;
+}
+
+.profile-username {
+  margin: auto 0;
+  padding: 0 5px;
+}
+
+
+.profile-list {
   display: flex;
   flex-wrap: wrap;
   margin: 3%;

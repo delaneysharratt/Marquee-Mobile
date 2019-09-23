@@ -6,23 +6,25 @@
 -- Otherwise you will have errors!
 CREATE TABLE "user" (
     "id" SERIAL PRIMARY KEY,
-    "username" VARCHAR (80) UNIQUE NOT NULL,
+    "username" VARCHAR (50) UNIQUE NOT NULL,
     "password" VARCHAR (1000) NOT NULL
 );
 
-CREATE TABLE "watch" (
-    "id" SERIAL PRIMARY KEY,
-    "title" VARCHAR(50),
-    "poster" VARCHAR(150),
-    "backdrop" VARCHAR(150),
-    "priority" VARCHAR(10),
-    "completed" BOOLEAN DEFAULT false,
-    "date_completed" DATE NULL,
-    "user_id" INT REFERENCES "user"
+CREATE TABLE "watch" (
+    "id" SERIAL PRIMARY KEY,
+    "title" VARCHAR(50),
+    "poster" VARCHAR(150),
+    "backdrop" VARCHAR(150),
+	"imdb_id" INT NULL, 
+    "priority" VARCHAR(10),
+	"rating" INT DEFAULT 0,
+    "completed" BOOLEAN DEFAULT FALSE,
+    "date_updated" TIMESTAMP,
+    "user_id" INT REFERENCES "user"
 );
 
-CREATE TABLE "friend" (
-    "id" SERIAL PRIMARY KEY,
-    "username" INT REFERENCES "user",
-    "friend" INT REFERENCES "user"
-)
+CREATE TABLE "friend" (
+    "id" SERIAL PRIMARY KEY,
+    "user_id" INT REFERENCES "user",
+    "friend_id" INT REFERENCES "user"
+);
