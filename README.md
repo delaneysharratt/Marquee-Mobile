@@ -1,3 +1,8 @@
+<!-- ![MIT LICENSE](https://img.shields.io/github/license/laneymckee/marquee-mobile.svg?style=flat-square) -->
+![REPO SIZE](https://img.shields.io/github/repo-size/laneymckee/marquee-mobile.svg?style=flat-square)
+![TOP_LANGUAGE](https://img.shields.io/github/languages/top/laneymckee/marquee-mobile.svg?style=flat-square)
+![FORKS](https://img.shields.io/github/forks/laneymckee/marquee-mobile.svg?style=social)
+
 # Marquee (Mobile)
 
 **Currently Formatted for:** iPhone X
@@ -110,5 +115,5 @@ An API key is required for use of this application from [The Movie Database](htt
 
 ## Acknowledgements
 
-- A huge thanks to [Prime Digital Academy](https://github.com/PrimeAcademy) in Minneapolis, and to my instructors Dane Smith and Kris Szafranski for providing the tools and instruction in order to help me develop the first version of this mobile application over the course of two weeks.
+- A huge thanks to [Prime Digital Academy](https://github.com/PrimeAcademy) in Minneapolis, and to my instructors Dane Smith and Kris Szafranski for providing the tools and instruction to help me develop the first version of this mobile application.
 - Special credit to [The Movie Database API](https://www.themoviedb.org/) for providing access to an enormous database of movie/television show titles, information, and high-resolution images of a variety of sizes and styles.
