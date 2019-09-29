@@ -1,4 +1,4 @@
-<!-- ![MIT LICENSE](https://img.shields.io/github/license/laneymckee/marquee-mobile.svg?style=flat-square) -->
+![GPLv3 LICENSE](https://img.shields.io/github/license/laneymckee/marquee-mobile.svg?style=flat-square)
 ![REPO SIZE](https://img.shields.io/github/repo-size/laneymckee/marquee-mobile.svg?style=flat-square)
 ![TOP_LANGUAGE](https://img.shields.io/github/languages/top/laneymckee/marquee-mobile.svg?style=flat-square)
 ![FORKS](https://img.shields.io/github/forks/laneymckee/marquee-mobile.svg?style=social)
